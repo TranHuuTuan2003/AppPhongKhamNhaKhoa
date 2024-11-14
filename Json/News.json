@@ -1,0 +1,231 @@
+{
+    "users":
+    [{
+        "taikhoan":"Admin",
+        "matkhau":"123",
+        "hoten":"Tran Huu Tuan"
+    },
+    {
+        "taikhoan":"",
+        "matkhau":"",
+        "hoten":"Tran Huu Tuan"
+    }]
+    
+    ,"News":[
+        {
+            "id": "1",
+            "name": "Cây chuối trổ hơn 100 nải ở Quảng Ngãi, người dân hiếu kỳ kéo đến chiêm ngưỡng",
+            "img": "https://photo-baomoi.bmcdn.me/w250_r3x2/2023_11_23_329_47611084/2fc898428b0e62503b1f.jpg.webp",
+            "icon":"https://photo-baomoi.bmcdn.me/1c6ea38145c3ac9df5d2.png",
+            "tieude":"Suốt 6 tháng qua, buồng chuối này liên tục trổ nải mới. Đến nay, buồng chuối này đã trổ hơn 100 nải.",
+            "nd1":"Nhiều ngày qua, nhiều người dân đã kéo đến nhà Đặng Thị Lan (69 tuổi, ở thôn 4, xã Nghĩa Dõng, TP Quảng Ngãi) để chiêm ngưỡng cây chuối trổ buồng liên tục trong 6 tháng qua. Theo bà Lan, cây chuối là do con trai bà ở TP.Nha Trang đem về trồng. Cách đây khoảng 6 tháng, cây chuối bắt đầu trổ buồng (bắp), đến nay đã có hơn 100 nải. ",
+            "nd2":"Nhiều người dân khuyên bà Lan nên cắt bỏ bắp để quả chuối lớn nhưng bà vẫn để lại và buồng chuối vẫn có dấu hiệu tiếp tục trổ. Qua ghi nhận, buồng chuối có chiều dài gần 1,5 m, chia nhỏ hơn 100 nải chuối. Các quả chuối chi chít xếp thành từng lớp, mỗi lớp có 2 nải. Do sợ buồng chuối nặng sẽ ngã, bà Lan đã lấy cây chằng chống. Cũng theo bà Lan, có nhiều người vì hiếu kỳ đã đến thăm buồng chuối, chụp ảnh và đăng tải lên mạng xã hội. Trước đó, vào năm 2019, người dân huyện Cát Tiên (Lâm Đồng) cũng tìm đến để tận mắt chiêm ngưỡng buồng chuối hơn 100 nải trổ hơn 3 tháng nhưng vẫn còn 'đẻ' tiếp của gia đình ông Cao Văn Hưng (50 tuổi).",
+            "nd3":"Theo ông Hưng, buồng chuối hơn 100 nải dài gần 2 m, quả nhiều chi chít xếp thành từng lớp, mỗi lớp có 2 nải. ",
+            "img2":"https://ss-images.saostar.vn/wwebp700/2023/11/23/pc/1700703563162/6y0eke11ay1-jw5ttxnns42-62if0psydg3.jpg",
+            "img3":"https://ss-images.saostar.vn/wwebp700/2023/11/23/pc/1700703563162/feljp7wmk91-k5p2u19drw2-hf879wmkom3.jpg",
+            "ndimg1":"Cây chuối hơn trăm nải tại gia đình bà Cao Thị Lan ở Quảng Ngãi. Ảnh: Người Lao Động ",
+            "ndimg2":"Cây chuối hơn trăm nải ở nhà ông Cao Văn Hưng. Ảnh: Người Lao Động",
+            "chuyenmuc":"Nóng"
+        },
+        {
+            "id": "2",
+            "name": "Ca sĩ nhí Nguyễn Ngọc Kim Cương trình diễn 'bùng nổ' mở màn Gala Sống xanh",
+            "img": "https://ss-images.saostar.vn/wwebp400/2023/11/22/pc/1700618848201/9uk9nyvjbe1-a6zmom7ys12-xnaalrbp3g3.jpg",
+            "icon":"https://photo-baomoi.bmcdn.me/42bc76d3ab9042ce1b81.png",
+            "tieude":"Ca sĩ nhí Nguyễn Ngọc Kim Cương khoe giọng hát nội lực khi trình diễn mở màn cho chương trình nghệ thuật “Gala Sống xanh 2023”.",
+            "nd1":"Tại đây, Nguyễn Ngọc Kim Cương đã trình bày ca khúc “Việt Nam những chuyến đi” của ca nhạc sĩ Vicky Nhung. Ca sĩ nhí sinh năm 2012 chinh phục khán giả bởi giọng hát nội lực cùng khả năng làm chủ sân khấu tốt. Cô bé đã truyền tải năng lượng tích cực và tình yêu, niềm tự hào với mảnh đất hình chữ S trong từng câu hát. ",
+            "nd2":"Sau đó, Nguyễn Ngọc Kim Cương đã thể hiện khả năng ngoại ngữ khi mashup ca khúc Tiếng Anh - “Dance Monkey” và Tiếng Tây Ban Nha - “Sofia”. Đặc biệt, vốn là một vũ công nhí, cô bé này còn khoe những bước nhảy chuyên nghiệp trên sân khấu. ",
+            "nd3":" Nguyễn Ngọc Kim Cương sinh năm 2012 tại Hà Nội. Cô bé từng giành Huy chương đồng bảng Đơn ca (bảng đông thí sinh nhất) trong Hội thi giọng hát dân va và tài năng nhạc cụ Thành phố Hà Nội mở rộng 2023 với tiết mục hát và độc tấu đàn tranh “Ngẫu hứng lí ngựa ô”.",
+            "img2":"https://ss-images.saostar.vn/wpr700/2023/11/22/pc/1700618848201/vbpkz9h2ay1-vx9w518cct2-vxdlj7d7443.jpg",
+            "img3":"https://ss-images.saostar.vn/wpr700/2023/11/22/pc/1700618848201/c7akvlpfel1-2riv13fosf2-92yf2q0gva3.jpg",
+            "ndimg1":"Nguyễn Ngọc Kim Cương khoe giọng hát nội lực trên sân khấu.",
+            "ndimg2":"Vốn là vũ công nhí tài năng, Nguyễn Ngọc Kim Cương tự tin khoe khả năng vũ đạo điêu luyện.",
+            "chuyenmuc":"Giải trí"
+        
+        },
+        {
+            "id": "3",
+            "name": "Đội tuyển Việt Nam để thua đáng tiếc trước Iraq trong phút bù giờ",
+            "img": "https://photo-baomoi.bmcdn.me/w250_r3x2/2023_11_21_287_47596479/323f928a80c6699830d7.jpg.webp",
+            "icon":"https://photo-baomoi.bmcdn.me/d1c2f8ad25eeccb095ff.png",
+            "tieude":"Ở giây cuối cùng của phút bù giờ thứ 6, tiền đạo Mohanad Ali đã đánh đầu ghi bàn thắng duy nhất giúp Iraq giành chiến thắng 1-0 trước đội tuyển Việt Nam.",
+            "nd1":"Xếp trên đội tuyển Việt Nam 26 bậc theo bảng FIFA, Iraq có đẳng cấp vượt trội. Thực tế trên sân giữa hai đội cho thấy điều đó khi các cầu thủ Iraq không chỉ có thể hình và thể lực vượt trội mà sức rướn cũng những kỹ thuật cũng nhỉnh hơn Việt Nam.",
+            "nd2":"Quá nghiệt ngã khi ĐTVN thua Iraq 0-1 từ cú lao người đánh đầu của Mohanad Ali sau đường chuyền bên cánh phải của Bayesh ở phút 90+7. Càng nghiệt ngã hơn khi ĐTVN không chỉ thua cuối trận mà thua khi càng về cuối, các cầu thủ Việt Nam càng giữ bóng tốt hơn và tổ chức tấn công nhiều hơn.",
+            "nd3":"Ông Troussier khiến mọi người ngỡ ngàng khi ông chọn những cầu thủ không tên tuổi, hoặc nếu có thì họ chỉ thi đấu ở giải Hạng nhất, Hạng nhì, nếu ở V-League thì chỉ dự bị hoặc được thi đấu thì chỉ tròn vai. Không ít người hoài nghi, âu lo nhưng ông Troussier vẫn kiên định. Ông còn giải thích rằng, những cầu thủ ông chọn, vì với ông những chàng trai rất mới này còn tài năng hơn những người được thi đấu nhiều. ",
+            "img2":"https://mtg.1cdn.vn/2023/11/22/trou.jpg",
+            "img3":"https://mtg.1cdn.vn/2023/11/22/troussier.jpeg",
+            "ndimg1":"HLV Troussier tin dùng nhiều nhân tố",
+            "ndimg2":"HLV Troussier (thứ 2 từ trái qua) và Nhà báo Nguyễn Công Khế (thứ 3 từ trái qua) bên cạnh các cầu thủ An Giang sau trận bán kết U.19 năm 2020 tại Bình Dương",
+            "chuyenmuc":"Bóng đá"
+        },
+        {
+            "id": "4",
+            "name": "Top phim phá 10.000 nhiệt độ trên IQIYI ",
+            "img": "https://photo-baomoi.bmcdn.me/w250_r3x2/2023_11_21_329_47588153/32b4c2d6d09a39c4608b.jpg.webp",
+            "icon":"https://photo-baomoi.bmcdn.me/42bc76d3ab9042ce1b81.png",
+            "tieude":"Nhiều khán giả không công nhận thành tích Ninh An Như Mộng đạt được trên nền tảng IQIYI.",
+            "nd1":"Danh sách những dự án phim phá 10.000 điểm nhiệt độ trên IQIYI tính riêng trong năm 2023 vừa được blogger tổng hợp gần đây đang gây chú ý khắp cõi mạng. ",
+            "nd2":"Theo đó, tính đến giữa tháng 11, IQIYI chỉ có 4 bộ phim chạm mốc 10.000 nhiệt độ, trong đó, Cuồng Phong (Bão Táp) là dự án có nhiệt độ cao nhất, với mức điểm 11.800. Theo ngay sau xếp ở vị trí thứ 2 là Trường Phong Độ do Bạch Kính Đình và Tống Dật chủ diễn, ghi nhận nhiệt độ cao nhất đạt được là 10.353 điểm. ",
+            "nd3":"Liên Hoa Lâu với sự tham gia diễn xuất của Thành Nghị, Tăng Thuấn Hy, Tiêu Thuận Nghiêu, Trần Đô Linh,… xếp hạng 3 trong tổng số 4 phim có nhiệt độ phá 10.000 điểm. Liên Hoa Lâu có màn ra mắt đầy ngoạn mục và ấn tượng. Xuyên suốt khoảng thời gian lên sóng, IQIYI chưa từng mặn mà trong việc quảng bá, tuyên truyền để tăng nhiệt và lượt xem cho phim, thế nhưng, với nội dung kịch bản hấp dẫn, logic, yếu tố phá án mới mẻ cùng diễn xuất tốt của dàn cast đã giúp phim được khán giả đón nhận nồng nhiệt. ",
+            "img3":"https://ss-images.saostar.vn/wwebp700/2023/11/21/pc/1700500301210/whsli8ia9x1-s4cs207xa02-fmhw127osb3.jpeg",
+            "img2":"https://ss-images.saostar.vn/wwebp700/2023/11/21/pc/1700500301210/23bheaf7dj1-xn91m4rtby2-rqupixdsja3.jpg",
+            "ndimg2":"10.000 điểm nhiệt độ. ",
+            "ndimg1":"Bạch Kính Đình và Tống Dật trong Trường Phong Độ. ",
+            "chuyenmuc":"Giải trí"
+        },
+        {
+            "id": "5",
+            "name": "Bánh đúc nóng Hà Nội, món quà chiều làm say lòng thực khách",
+            "img": "https://photo-baomoi.bmcdn.me/w250_r3x2/2023_11_23_35_47610911/a9a118240b68e236bb79.jpg.webp",
+            "icon":"https://photo-baomoi.bmcdn.me/1efe2391fed2178c4ec3.png",
+            "tieude":"Luôn giữ vị trí vững vàng trong danh sách những món ngon phải thử ở Hà Nội, bánh đúc nóng mê hoặc thực khách gần xa bởi hương vị độc đáo rất riêng.",
+            "nd1":"Trải qua năm tháng, các món ăn truyền thống của Hà Nội vẫn giữ nguyên được hương vị như ngày đầu, chưa bao giờ làm cho ta phải thất vọng. Bên cạnh những món đặc sản nổi tiếng như cốm, bún chả, phở… nhiều người khi đến với Hà Nội còn không quên tìm đến món bánh đúc nóng, một trong những món ăn ngon nức tiếng tại mảnh đất Hà Thành.",
+            "nd2":"Luôn có vị trí vững vàng trong danh sách những món ngon Hà Nội phải thử, bánh đúc nóng “mê hoặc” thực khách gần xa với hương vị độc đáo rất riêng. Trong đời sống người Hà Nội, đây là thức quà tuyệt vời nhất để thưởng thức vào những buổi chiều trong nhưng ngày đông tiết trời se se lạnh. Những bát bánh đúc nóng Hà Nội đầy ắp nhân thịt, mộc nhĩ, hành phi thơm nức chan thêm nước mắm nóng hổi nghi ngút khói đã làm mê lòng biết bao thực khách gần xa. Để giúp món bánh đúc nóng trở nên thơm ngon hơn, người bán hàng sẽ rắc thêm một chút hành phi thơm nồng cùng một ít rau mùi và kinh giới được thái nhỏ lên trên bánh. Cuối cùng là chan thêm nước mắm mặn ngọt. Khách hàng nào muốn ăn cay có thể rắc thêm một chút tiêu hoặc ớt bột để thêm trọn vị.",
+            "nd3":"Quy trình chung là thế nhưng bằng sự sáng tạo, biến tấu của từng nơi mà những bát bánh đúc nóng Hà Nội có thể sẽ có chút khác biệt. Có nơi sẽ tập trung chính cho hương vị nước dùng, có nơi lại chú trọng vào phần thịt xào… Song cho dù có thay đổi thế nào đi chăng nữa, bánh đúc nóng vẫn là một món ăn ngon và thích hợp trong những ngày Hà Nội mùa thu se se hay mùa đông lạnh. ",
+            "img2":"https://congthuong-cdn.mastercms.vn/stores/news_dataimages/2023/112023/23/09/banh-duc20231123091822.jpg?rt=20231123091823",
+            "img3":"https://congthuong-cdn.mastercms.vn/stores/news_dataimages/2023/112023/23/09/banh-duc20231123091822.jpg?rt=20231123091823",
+            "ndimg1":"Những bát bánh đúc nóng Hà Nội đầy ắp nhân thịt, mộc nhĩ, hành phi thơm nức chan thêm nước mắm nóng hổi nghi ngút khói đã làm mê lòng biết bao thực khách gần xa",
+            "ndimg2":"Những bát bánh đúc nóng Hà Nội đầy ắp nhân thịt, mộc nhĩ, hành phi thơm nức chan thêm nước mắm nóng hổi nghi ngút khói đã làm mê lòng biết bao thực khách gần xa",
+            "chuyenmuc":"Thế giới"
+        },
+        {
+            "id": "6",
+            "name": "'Nàng thơ' Hoàng Hà run khi đóng cô dâu phim kinh dị",
+            "img": "https://photo-baomoi.bmcdn.me/w250_r3x2/2023_11_08_23_47466556/2736a769b825517b0834.jpg.webp",
+            "icon":"https://photo-baomoi.bmcdn.me/8dd302bddffe36a06fef.png",
+            "tieude":"Hoàng Hà - nàng thơ trong 'Em và Trịnh' trải nghiệm cảm giác lo lắng, phấn khích khi lần đầu đóng vai cô dâu với lễ cưới tổ chức đêm khuya trên núi đá Hà Giang.",
+            "nd1":"Bộ đôi đạo diễn Trần Hữu Tấn và nhà sản xuất Hoàng Quân vừa công bố những hình ảnh đầu tiên của tác phẩm điện ảnh Kẻ ăn hồn.Trong đó, đoạn teaser mở ra hành trình truy tìm nguồn gốc rượu sọ người - một loại cổ thuật dân gian được đồn đại đã từng xuất hiện ở chính ngôi làng Địa Ngục thuở sơ khai.",
+            "nd2":"Phim được chuyển thể từ tiểu thuyết gốc cùng tên của nhà văn Thảo Trang. Ngoài hình ảnh đám cưới chuột, khán giả còn bắt gặp những hình tượng đậm văn hóa Việt như rối nước, thủy đình, bài vè...Phim quy tụ dàn diễn viên trẻ trung lẫn giàu kinh nghiệm từ miền Bắc và miền Nam như: Hoàng Hà, Võ Điền Gia Huy, Huỳnh Thanh Trực, NSƯT Chiều Xuân, nghệ sĩ Viết Liên, NSND Ngọc Thư, Nguyễn Hữu Tiến, Nguyễn Phước Lộc...",
+            "nd3":"Trong đó, Hoàng Hà đóng vai cô Phong - con gái trưởng làng. Trong phim, nhân vật vì muốn xua đi oán khí của ngôi làng nơi mình sống mà chấp nhận lên xe hoa. Vai diễn có sự phức tạp về tâm lý, biểu cảm và cả những hành động tạo sự tò mò cho người xem. Theo Hoàng Hà, tác phẩm mang một thái cực hoàn toàn khác biệt so với Em và Trịnh. Nhân vật cô Phong của cô cũng có nhiều điểm mới so với nhân vật ‘nàng thơ’ Dao Ánh. Hoàng Hà ấn tượng khung cảnh lễ cưới với không khí trang trọng, lộng lẫy nhưng nhuốm màu u ám. Nữ diễn viên tập trung vào nhân vật và câu chuyện với mong muốn hoàn thành cảnh quay trong thời gian sớm nhất.“Cảnh đám cưới này cũng là cảnh quay đầu tiên mà cả cả ê-kíp cùng thực hiện trong một đêm mưa lạnh trên núi đá ở Hà Giang. Đây là một cảnh khó trên một địa hình khó, mọi người rất dễ trượt chân ngã, tôi run nhưng vẫn cố gắng nghiêm túc và tập trung hết khả năng”, cô chia sẻ. ",
+            "img2":"https://static-images.vnncdn.net/files/publish/2023/11/8/batch-ddlogokah14639-1010.jpg",
+            "img3":"https://static1.dienanh.net/upload/202312/50beddbf-1ac6-420d-b9d8-5f0b9f6e6541.jpg",
+            "ndimg1":"Hoàng Hà trải nghiệm lần đầu đóng phim kinh dị. ",
+            "ndimg2":"Kẻ ăn hồn được quay tại làng Sảo Há - Hà Giang. ",
+            "chuyenmuc":"Nóng"
+        },
+        {
+            "id": "7",
+            "name":"F4 Thái Lan yêu đương mỹ nhân 'Tuổi nổi loạn'        ",
+            "img": "https://photo-baomoi.bmcdn.me/w250_r3x2/2023_11_09_304_47470696/7eeb9914815868063149.jpg.webp",
+            "icon":"https://photo-baomoi.bmcdn.me/8dd302bddffe36a06fef.png",
+            "tieude":"DNVN - Lần đầu hợp tác cùng “F4 Thái Lan” Dew Jirawat, Kao Supassara phải đi xem tử vi để khẳng định mối quan hệ yêu đương.",
+            "nd1":"Thuộc thể loại tình cảm - hài hước, Tình Yêu Vô Diện với sự tham gia của “F4 Thái Lan” Dew Jirawat, sao nữ Tuổi Nổi Loạn Kao Supassara và Luke Ishikawa… kể về Vikij một CEO trẻ lạnh lùng, sở hữu ngoại hình nổi bật, thông minh, giàu có. Tuy nhiên anh mắc bệnh Prosopagnosia (chứng rối loạn não khiến người ta quên mất khuôn mặt), chỉ có thể phân biệt mọi người trong công ty qua thẻ tên. Điều này khiến Vikij gặp nhiều rắc rối trong công việc. Định mệnh đưa anh đến gặp Mirin (do Kao Supassara thủ vai), cô thư ký mới giúp anh kết nối với phần còn lại của thế giới, hứa hẹn thay đổi cuộc đời anh mãi mãi.",
+            "nd2":"F4 Thái Lan yêu đương mỹ nhân 'Tuổi nổi loạn' trong 'Tình yêu vô diện' Mirin là cô gái trẻ xinh đẹp và năng động, không ngờ rằng cuộc sống của cô sẽ thay đổi hoàn toàn khi gặp gỡ Vikij. Ban đầu, Mirin chỉ xem công việc này như một cơ hội để kiếm thêm thu nhập và trải nghiệm cuộc sống mới. Nhưng dần dần, cả hai bắt đầu cảm nhận được sự hấp dẫn và sự hiểu biết sâu sắc về nhau. Liệu vị CEO trẻ tuổi lạnh lùng này có khỏi bệnh là thắc mắc lớn của “mọt phim Thái”.Tình Yêu Vô Diện nhận được nhiều thảo luận trên các diễn đàn, nhất là khi thông báo thay đổi diễn viên, thậm chí cả những diễn viên nổi tiếng lúc bắt đầu khởi quay. Cặp đôi chính Dew Jirawat và Kao Supassara đều được đánh giá cao về diễn xuất và lần đầu hợp tác trong dự án lớn do đạo diễn Koo Ekkasit Trakulkasemsuk - là đạo diễn của loạt series nổi tiếng (Chiếc Lá Cuốn Bay, Astrophile, 46 Days…) dẫn dắt diễn xuất. Các diễn viên “trai xinh, gái đẹp” là những “gà mới” đang lên của GMM, có lượng fandom đông đảo, hứa hẹn làm nên chuyện cho Tình Yêu Vô Diện.",
+            "nd3":"Kao Supassara khiến hội “đẩy thuyền” thêm thích thú trước lúc Tình Yêu Vô Diện “lên kệ” VieON khi bật mí đã xem tử vi sẽ có người yêu và rất khó giải thích mối quan hệ ngoài công việc với Dew Jirawat. “Tôi và Dew Jirawat đã chụp ảnh cùng nhau và được nhiều người ‘đẩy thuyền’. Tôi cảm thấy vui vì bộ phim đã được nhiều người theo dõi. Tôi đã đọc tử vi để có động lực trong cuộc sống. Hiện tại không có chàng trai nào đến cả, tôi độc thân được khoảng 2 năm rồi và cũng không có ai đến trò chuyện. Cá nhân tôi nghĩ anh ấy không biết. Nghiêm túc mà nói tôi không biết tán tỉnh anh ấy” - Kao Supassara hài hước chia sẻ. ",
+            "img2":"https://media.doanhnghiepvn.vn/Images/Uploaded/Share/2023/11/08/batch_TinhYeuVoDien_PhotobyVieON-1.jpg?format=webp",
+            "img3":"https://media.doanhnghiepvn.vn/Images/Uploaded/Share/2023/11/08/batch_TinhYeuVoDien_PhotobyVieON-4.jpg?format=webp",
+            "ndimg1":"F4 Thái Lan yêu đương mỹ nhân 'Tuổi nổi loạn' trong 'Tình yêu vô diện' ",
+            "ndimg2":"F4 Thái Lan yêu đương mỹ nhân 'Tuổi nổi loạn' trong 'Tình yêu vô diện' ",
+            "chuyenmuc":"Tình yêu"
+        },
+        {
+            "id": "8",
+            "name": "Cây chuối trổ hơn 100 nải ở Quảng Ngãi, người dân hiếu kỳ kéo đến chiêm ngưỡng",
+            "img": "https://photo-baomoi.bmcdn.me/w250_r3x2/2023_11_23_329_47611084/2fc898428b0e62503b1f.jpg.webp",
+            "icon":"https://photo-baomoi.bmcdn.me/1c6ea38145c3ac9df5d2.png",
+            "tieude":"Suốt 6 tháng qua, buồng chuối này liên tục trổ nải mới. Đến nay, buồng chuối này đã trổ hơn 100 nải.",
+            "nd1":"Nhiều ngày qua, nhiều người dân đã kéo đến nhà Đặng Thị Lan (69 tuổi, ở thôn 4, xã Nghĩa Dõng, TP Quảng Ngãi) để chiêm ngưỡng cây chuối trổ buồng liên tục trong 6 tháng qua. Theo bà Lan, cây chuối là do con trai bà ở TP.Nha Trang đem về trồng. Cách đây khoảng 6 tháng, cây chuối bắt đầu trổ buồng (bắp), đến nay đã có hơn 100 nải. ",
+            "nd2":"Nhiều người dân khuyên bà Lan nên cắt bỏ bắp để quả chuối lớn nhưng bà vẫn để lại và buồng chuối vẫn có dấu hiệu tiếp tục trổ. Qua ghi nhận, buồng chuối có chiều dài gần 1,5 m, chia nhỏ hơn 100 nải chuối. Các quả chuối chi chít xếp thành từng lớp, mỗi lớp có 2 nải. Do sợ buồng chuối nặng sẽ ngã, bà Lan đã lấy cây chằng chống. Cũng theo bà Lan, có nhiều người vì hiếu kỳ đã đến thăm buồng chuối, chụp ảnh và đăng tải lên mạng xã hội. Trước đó, vào năm 2019, người dân huyện Cát Tiên (Lâm Đồng) cũng tìm đến để tận mắt chiêm ngưỡng buồng chuối hơn 100 nải trổ hơn 3 tháng nhưng vẫn còn 'đẻ' tiếp của gia đình ông Cao Văn Hưng (50 tuổi).",
+            "nd3":"Theo ông Hưng, buồng chuối hơn 100 nải dài gần 2 m, quả nhiều chi chít xếp thành từng lớp, mỗi lớp có 2 nải. ",
+            "img2":"https://ss-images.saostar.vn/wwebp700/2023/11/23/pc/1700703563162/6y0eke11ay1-jw5ttxnns42-62if0psydg3.jpg",
+            "img3":"https://ss-images.saostar.vn/wwebp700/2023/11/23/pc/1700703563162/feljp7wmk91-k5p2u19drw2-hf879wmkom3.jpg",
+            "ndimg1":"Cây chuối hơn trăm nải tại gia đình bà Cao Thị Lan ở Quảng Ngãi. Ảnh: Người Lao Động ",
+            "ndimg2":"Cây chuối hơn trăm nải ở nhà ông Cao Văn Hưng. Ảnh: Người Lao Động",
+            "chuyenmuc":"Thế giới"
+        },
+
+        {
+            "id": "9",
+            "name": "Ukraine bỏ lỡ cơ hội đàm phán có lợi với Nga",
+            "img": "https://photo-baomoi.bmcdn.me/w250_r3x2/2023_12_17_23_47833607/34f0a18ddec1379f6ed0.jpg.webp",
+            "icon":"https://photo-baomoi.bmcdn.me/d1c2f8ad25eeccb095ff.png",
+            "tieude":"Phó Đại sứ Nga tại Liên Hợp Quốc Dmitry Polyanskiy cho biết, Ukraine đã bỏ lỡ cơ hội để đàm phán với Nga một thỏa thuận hòa bình có lợi.",
+            "nd3":"Nhà ngoại giao Nga dường như đề cập tới thỏa thuận sơ bộ đạt được tại các cuộc hòa đàm do Thổ Nhĩ Kỳ tổ chức vào tháng 3/2022. Tổng thống Nga sau đó đã hủy thỏa thuận và nói rằng giới lãnh đạo Ukraine đã ném nó vào bãi rác lịch sử. Ông Polyanskiy nói: Mọi người đều biết rằng các nhà đàm phán của ông Zelensky đã khởi xướng thỏa thuận và bản sao của nó đã được chính Tổng thống Putin đưa ra ",
+            "nd1":"Hãng tin RT dẫn bài đăng trên mạng xã hội X ngày 16/12 của ông Polyanskiy viết, các nhà lãnh đạo Ukraine đã bỏ lỡ cơ hội tìm ra một lối thoát có lợi cho cuộc xung đột của nước này với Nga, vì thế, bất cứ một thỏa thuận nào nhằm chấm dứt giao tranh sẽ không thể bằng thỏa thuận mà Tổng thống Volodymyr Zelensky đã từ bỏ hồi tháng 3/2022. Ông Zelensky đã lãng phí cơ hội để có thỏa thuận có lợi. Bất kỳ thỏa thuận nào có được bây giờ sẽ phản ánh sự đầu hàng của họ",
+            "nd2":"Phó Đại sứ Nga tại Liên Hợp Quốc (LHQ) đã bình luận như vậy để đáp lại tuyên bố của một nhân vật chống Nga nổi tiếng ở phương Tây là Michael McFaul - người nói rằng Tổng thống Putin chưa bao giờ nghiêm túc trong việc đi tới một thỏa thuận hòa bình với Ukraine. ",
+            "img2":"https://static-images.vnncdn.net/files/publish/2023/12/17/pho-ds-nga-525.jpg?width=768&s=84GN1gLtHHZprknu6-bbiw",
+            "img3":"https://static-images.vnncdn.net/files/publish/2023/12/17/pho-ds-nga-525.jpg?width=768&s=84GN1gLtHHZprknu6-bbiw",
+            "ndimg1":"Phó Đại sứ Nga tại LHQ. Ảnh: RT",
+            "ndimg2":"Phó Đại sứ Nga tại LHQ. Ảnh: RT",
+            "chuyenmuc":"Nóng"
+        },
+        {
+            "id": "10",
+            "name": "Đắk Lắk: Triệt phá đường dây buôn lậu thuốc bảo vệ thực vật thuộc danh mục cấm",
+            "img": "https://imagev3.vietnamplus.vn/w820/Uploaded/2023/fsmsy/2023_12_17/thuoc-bvtv-2338.png.webp",
+            "icon":"https://photo-baomoi.bmcdn.me/1c6ea38145c3ac9df5d2.png",
+            "tieude":"Các loại thuốc bảo vệ thực vật trong vụ án không có tên trong danh mục được phép sử dụng tại Việt Nam vì dư lượng chất nguy hại vượt ngưỡng cho phép, không đảm bảo an toàn cho con người, cây trồng.",
+            "nd3":"Đối tượng Long đối phó với cơ quan chức năng bằng các thủ đoạn như chỉ liên hệ mua hàng tại Campuchia khi có khách đặt hàng. Khi hàng hóa về, Long thuê xe vận chuyển giao ngay cho khách hoặc để tại phòng trọ ở thành phố Buôn Ma Thuột, tỉnh Đắk Lắk mà không để tại cửa hàng. Mỗi lần Long mua dưới 30 thùng, giá trị dưới 100 triệu đồng tránh bị xử lý hình sự.",
+            "nd1":"Cơ quan công an đã khởi tố Nguyễn Dân Phụng (26 tuổi) và Nguyễn Trường Vũ (38 tuổi) cùng trú tại Thành phố Hồ Chí Minh để điều tra làm rõ hành vi buôn lậu và vận chuyển trái phép hàng hóa, tiền tệ qua biên giới; khởi tố Triệu Quang Long (32 tuổi, trú tỉnh Đắk Lắk) để điều tra làm rõ hành vi buôn lậu; Nguyễn Ngọc Đạt (40 tuổi, trú tỉnh Tây Ninh) và Lý Văn Thảo (37 tuổi, trú tỉnh Bình Phước) cùng bị khởi tố để điều tra làm rõ hành vi vận chuyển trái phép hàng hóa, tiền tệ qua biên giới.Qua công tác nắm tình hình, lực lượng công an phát hiện trên địa bàn tỉnh đang lưu thông số lượng lớn thuốc bảo vệ thực vật không có tên trong danh mục được phép sử dụng tại Việt Nam. Các loại thuốc này có nguồn gốc từ Thái Lan, Campuchia, không có nhãn phụ bằng tiếng Việt.",
+            "nd2":"Quá trình sàng lọc, cơ quan công an phát hiện đối tượng Triệu Quang Long (chủ Cửa hàng Vật tư nông nghiệp Đàn Điệp, huyện Krông Pắc, tỉnh Đắk Lắk) là một trong những đầu mối phân phối số lượng lớn thuốc bảo vệ thực vật có nguồn gốc từ Campuchia.",
+            "img2":"https://imagev3.vietnamplus.vn/w820/Uploaded/2023/fsmsy/2023_12_17/thuoc-bvtv-2338.png.webp",
+            "img3":"https://tse2.mm.bing.net/th?id=OIP.cGQjNlWGbda3O8MxPQ-J6gHaDp&pid=Api&P=0&h=180",
+            "ndimg1":"Một sản phẩm thuốc bảo vệ thực vật nghi buôn lậu vào Việt Nam. (Nguồn: Dân Trí)",
+            "ndimg2":"Một sản phẩm thuốc bảo vệ thực vật nghi buôn lậu vào Việt Nam. (Nguồn: Dân Trí)",
+            "chuyenmuc":"Nóng"
+        },
+        {
+            "id": "11",
+            "name": "Vụ 11 học sinh ăn 2 gói mì tôm chan cơm: Đình chỉ công tác hiệu trưởng",
+            "img": "https://photo-baomoi.bmcdn.me/w250_r3x2/2023_12_17_15_47834629/2678792e0662ef3cb673.jpg.webp",
+            "icon":"https://photo-baomoi.bmcdn.me/8dd302bddffe36a06fef.png",
+            "tieude":"(NLĐO) - Một hiệu vừa bị đình chỉ công tác để làm rõ việc 11 học sinh bán trú ăn chung 2 gói mì tôm chan cơm gây xôn xao dư luận",
+            "nd3":"Đồng thời, UBND tỉnh Lào Cai cũng giao Sở GD-ĐT phối hợp với UBND các huyện, thị xã, thành phố tiến hành rà soát việc tổ chức các bữa ăn cho học sinh bán trú, nội trú và việc thực hiện các chế độ chính sách khác đối với học sinh. Được biết, trong ngày 17-12, Sở GD-ĐT, UBND huyện Bắc Hà tổ chức đoàn kiểm tra trực tiếp xuống trường làm việc với ban giám hiệu, học sinh và nhân viên trường học. Tại buổi làm việc, lãnh đạo Sở GD-ĐT yêu cầu xử lý nghiêm nếu có vi phạm xảy ra; việc báo cáo của trường, của ngành cần phải trung thực, khách quan; trách nhiệm của hiệu trưởng nhà trường và những người liên quan cần được xác định rõ.",
+            "nd1":"Chiều 17-12, thông tin từ Phòng GD-ĐT huyện Bắc Hà, Lào Cai, cho biết UBND huyện vừa họp và thống nhất tạm đình chỉ hiệu trưởng trường Phổ thông Dân tộc bán trú Tiểu học Hoàng Thu Phố 1, huyện Bắc Hà, Lào Cai trong 15 ngày kể từ ngày 17-12 để làm rõ việc các em học sinh trường này phải ăn mì tôm chan cơm gây xôn xao dư luận.",
+            "nd2":"Theo khẩu phần ghi trên bảng nhà trường, mỗi em được ăn 1 gói mì tôm, 1 quả trứng nhưng thực tế nhà trường chỉ cho 11 em ăn chung 2 gói mì tôm chan với cơm. Trường có tổng số 174 học sinh bán trú hưởng chế độ ăn sáng này. Ngoài ra, thực phẩm dùng để chế biến cho các em học sinh bán trú của trường cũng được phản ánh kém chất lượng.",
+            "img2":"https://nld.mediacdn.vn/thumb_w/640/291774122806476800/2023/12/17/pho-1-17028009191401705500544.jpg",
+            "img3":"https://photo-baomoi.bmcdn.me/w250_r3x2/2023_12_17_15_47834629/2678792e0662ef3cb673.jpg.webp",
+            "ndimg1":"Trường Trường Phổ thông dân tộc bán trú Tiểu học Hoàng Thu Phố 1 nơi xảy ra sự việc. Ảnh: Facebook",
+            "ndimg2":"Trường Trường Phổ thông dân tộc bán trú Tiểu học Hoàng Thu Phố 1 nơi xảy ra sự việc. Ảnh: Facebook",
+            "chuyenmuc":"Nóng"
+        },
+        {
+            "id": "12",
+            "name": "150 đại biểu dự phiên họp về công tác người Việt Nam ở nước ngoài và bảo hộ công dân",
+            "img": "https://photo-baomoi.bmcdn.me/w250_r3x2/2023_12_17_194_47834772/15047f5f0013e94db002.jpg.webp",
+            "icon":"https://photo-baomoi.bmcdn.me/1efe2391fed2178c4ec3.png",
+            "tieude":"Ngày 17/12, trong khuôn khổ Hội nghị Ngoại giao lần thứ 32, Ủy ban Nhà nước về người Việt Nam ở nước ngoài và Cục Lãnh sự đồng chủ trì Phiên chuyên đề về công tác người Việt Nam ở nước ngoài (NVNONN) và bảo hộ công dân tại Nhà làm việc Bộ Ngoại giao, số 2 Lê Quang Đạo.",
+            "nd3":"Phát biểu chỉ đạo tại Phiên họp, Thứ trưởng Ngoại giao Lê Thị Thu Hằng biểu dương, đánh giá cao những nỗ lực, kết quả đạt được của các Cơ quan đại diện, ghi nhận, chia sẻ các ý kiến phát biểu, đóng góp sâu sắc, tâm huyết của các Trưởng Cơ quan đại diện, đồng thời chỉ đạo một số phương hướng thời gian tới. Về công tác NVNONN, các Cơ quan đại diện tiếp tục bám sát, triển khai các nhiệm vụ trong Kết luận số 12-KL/TW của Bộ Chính trị và Chương trình hành động của Chính phủ về công tác NVNONN giai đoạn 2021-2026; đổi mới và đa dạng hóa các hoạt động vận động kiều bào, nhất là thế hệ trẻ gắn kết với quê hương; đẩy mạnh phát huy nguồn lực của NVNONN phục vụ phát triển đất nước; chú trọng chăm lo, hỗ trợ kiều bào ổn định cuộc sống, hội nhập xã hội sở tại; tăng cường hỗ trợ NVNONN giữ gìn tiếng Việt, bản sắc văn hóa dân tộc; đổi mới công tác thông tin, tuyên truyền tới cộng đồng.",
+            "nd1":"Phiên họp có sự tham dự của 150 đại biểu là Trưởng các Cơ quan đại diện Việt Nam ở nước ngoài, lãnh đạo một số đơn vị thuộc Bộ Ngoại giao, lãnh đạo và cán bộ Ủy ban Nhà nước về NVNONN và Cục Lãnh sự. Thứ trưởng Ngoại giao, Chủ nhiệm Ủy ban Nhà nước về người NVNONN Lê Thị Thu Hằng tham dự và phát biểu chỉ đạo. Phiên họp tập trung đánh giá những kết quả đạt được kể từ Hội nghị Ngoại giao 31 đến nay, đồng thời chỉ ra những mặt tồn tại, hạn chế và trao đổi về phương hướng công tác NVNONN và bảo hộ công dân trong thời gian tới..",
+            "nd2":"Phiên họp đã nghe 8 tham luận và nhiều ý kiến thảo luận của các đồng chí Trưởng Cơ quan đại diện với kinh nghiệm phong phú từ các địa bàn khác nhau trong công tác phát huy nguồn lực, đại đoàn kết, vận động kiều bào và hỗ trợ cộng đồng người Việt Nam ở sở tại củng cố địa vị pháp lý, ổn định cuộc sống, cũng như trong công tác bảo hộ công dân, pháp nhân Việt Nam ở nước ngoài. Từ đó đề xuất các giải pháp nhằm tháo gỡ những khó khăn, vướng mắc.",
+            "img2":"https://photo-baomoi.bmcdn.me/w250_r3x2/2023_12_17_194_47834772/15047f5f0013e94db002.jpg.webp",
+            "img3":"https://cdn.baoquocte.vn/stores/news_dataimages/2023/122023/17/15/150-dai-bieu-tham-du-phien-hop-ve-cong-tac-nguoi-viet-nam-o-nuoc-ngoai-va-bao-ho-cong-dan-20231217152719.jpg?rt=20231217153032",
+            "ndimg1":"150 đại biểu lắng nghe và tham gia thảo luận phiên họp. ",
+            "ndimg2":"150 đại biểu lắng nghe và tham gia thảo luận phiên họp. ",
+            "chuyenmuc":"Nóng"
+        },
+        {
+            "id": "13",
+            "name": "Nữ diễn viên Hàn được săn đón vì chuyển sang phong cách gợi cảm",
+            "img": "https://photo.znews.vn/w1920/Uploaded/pnbcuhbatgunb/2023_12_15/ezgif_5_bbb43567a9.jpg",
+            "icon":"https://photo-baomoi.bmcdn.me/9f18981d9050790e2041.png",
+            "tieude":"Suốt 6 tháng qua, buồng chuối này liên tục trổ nải mới. Đến nay, buồng chuối này đã trổ hơn 100 nải.",
+            "nd1":"Nhiều ngày qua, nhiều người dân đã kéo đến nhà Đặng Thị Lan (69 tuổi, ở thôn 4, xã Nghĩa Dõng, TP Quảng Ngãi) để chiêm ngưỡng cây chuối trổ buồng liên tục trong 6 tháng qua. Theo bà Lan, cây chuối là do con trai bà ở TP.Nha Trang đem về trồng. Cách đây khoảng 6 tháng, cây chuối bắt đầu trổ buồng (bắp), đến nay đã có hơn 100 nải. ",
+            "nd2":"Nhiều người dân khuyên bà Lan nên cắt bỏ bắp để quả chuối lớn nhưng bà vẫn để lại và buồng chuối vẫn có dấu hiệu tiếp tục trổ. Qua ghi nhận, buồng chuối có chiều dài gần 1,5 m, chia nhỏ hơn 100 nải chuối. Các quả chuối chi chít xếp thành từng lớp, mỗi lớp có 2 nải. Do sợ buồng chuối nặng sẽ ngã, bà Lan đã lấy cây chằng chống. Cũng theo bà Lan, có nhiều người vì hiếu kỳ đã đến thăm buồng chuối, chụp ảnh và đăng tải lên mạng xã hội. Trước đó, vào năm 2019, người dân huyện Cát Tiên (Lâm Đồng) cũng tìm đến để tận mắt chiêm ngưỡng buồng chuối hơn 100 nải trổ hơn 3 tháng nhưng vẫn còn 'đẻ' tiếp của gia đình ông Cao Văn Hưng (50 tuổi).",
+            "nd3":"Theo ông Hưng, buồng chuối hơn 100 nải dài gần 2 m, quả nhiều chi chít xếp thành từng lớp, mỗi lớp có 2 nải. ",
+            "img2":"https://photo.znews.vn/w960/Uploaded/pnbcuhbatgunb/2023_12_15/GBTbegjboAAwEuN.jpg",
+            "img3":"https://photo.znews.vn/w960/Uploaded/pnbcuhbatgunb/2023_12_15/GBMfbi_aEAA_Fb.jpg",
+            "ndimg1":"Cây chuối hơn trăm nải tại gia đình bà Cao Thị Lan ở Quảng Ngãi. Ảnh: Người Lao Động ",
+            "ndimg2":"Cây chuối hơn trăm nải ở nhà ông Cao Văn Hưng. Ảnh: Người Lao Động",
+            "chuyenmuc":"Nóng"
+        },
+        {
+            "id": "14",
+            "name": "Hậu vệ Premier League đột quỵ trên sân, trận đấu bị hủy",
+            "img": "https://photo.znews.vn/w660/Uploaded/sotnzt/2023_12_16/loc.jpg",
+            "icon":"https://photo-baomoi.bmcdn.me/42bc76d3ab9042ce1b81.png",
+            "tieude":"Nhiều khán giả không công nhận thành tích Ninh An Như Mộng đạt được trên nền tảng IQIYI.",
+            "nd1":"Danh sách những dự án phim phá 10.000 điểm nhiệt độ trên IQIYI tính riêng trong năm 2023 vừa được blogger tổng hợp gần đây đang gây chú ý khắp cõi mạng. ",
+            "nd2":"Theo đó, tính đến giữa tháng 11, IQIYI chỉ có 4 bộ phim chạm mốc 10.000 nhiệt độ, trong đó, Cuồng Phong (Bão Táp) là dự án có nhiệt độ cao nhất, với mức điểm 11.800. Theo ngay sau xếp ở vị trí thứ 2 là Trường Phong Độ do Bạch Kính Đình và Tống Dật chủ diễn, ghi nhận nhiệt độ cao nhất đạt được là 10.353 điểm. ",
+            "nd3":"Liên Hoa Lâu với sự tham gia diễn xuất của Thành Nghị, Tăng Thuấn Hy, Tiêu Thuận Nghiêu, Trần Đô Linh,… xếp hạng 3 trong tổng số 4 phim có nhiệt độ phá 10.000 điểm. Liên Hoa Lâu có màn ra mắt đầy ngoạn mục và ấn tượng. Xuyên suốt khoảng thời gian lên sóng, IQIYI chưa từng mặn mà trong việc quảng bá, tuyên truyền để tăng nhiệt và lượt xem cho phim, thế nhưng, với nội dung kịch bản hấp dẫn, logic, yếu tố phá án mới mẻ cùng diễn xuất tốt của dàn cast đã giúp phim được khán giả đón nhận nồng nhiệt. ",
+            "img3":"https://photo.znews.vn/w660/Uploaded/sotnzt/2023_12_16/loc.jpg",
+            "img2":"https://photo.znews.vn/w360/Uploaded/sotnzt/2023_12_16/gettyimages_1435646187_2127.jpg",
+            "ndimg2":"10.000 điểm nhiệt độ. ",
+            "ndimg1":"Bạch Kính Đình và Tống Dật trong Trường Phong Độ. ",
+            "chuyenmuc":"Bóng đá"
+        }
+        
+    ]
+
+    
+}
