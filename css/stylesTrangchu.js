@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     marginBottom: 10,
-    borderRadius: '50%',
+    borderRadius: 50,
   },
   imageIcon: {
     width: 45,
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
     left: '50%',
     transform: [{ translateX: -30 }],
     backgroundColor: '#00B5F1',
-    borderRadius: '50%',
+    borderRadius: 50,
     width: 65,
     height: 65,
     justifyContent: 'center',
@@ -292,7 +292,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     marginRight: 15,
-    borderRadius: '50%',
+    borderRadius: 50,
   },
   textservice: {
     fontSize: 15,

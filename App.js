@@ -15,7 +15,6 @@ const Stack= createNativeStackNavigator();
 
 const App=()=> {
   return (
-
     <NavigationContainer >
       <Stack.Navigator initialRouteName='Trangchu' screenOptions={{headerShown:false}}>
         <Stack.Screen name='Dangnhap' component={Dangnhap}/>
@@ -26,10 +25,6 @@ const App=()=> {
         <Stack.Screen name='Profile' component={Profile}/>
       </Stack.Navigator>
     </NavigationContainer>
-
-
-
-     
   );
 }
 export default App;

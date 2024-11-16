@@ -305,7 +305,7 @@ const styles = StyleSheet.create({
     left: '50%',
     transform: [{ translateX: -30 }],
     backgroundColor: '#00B5F1',
-    borderRadius: '50%',
+    borderRadius: 50,
     width: 65,
     height: 65,
     justifyContent: 'center',
