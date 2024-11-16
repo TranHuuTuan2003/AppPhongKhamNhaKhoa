@@ -1,29 +1,44 @@
-import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { View, Text, TextInput, StyleSheet, ScrollView, ImageBackground } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { TouchableOpacity, ScrollView, View, Text, TextInput, StyleSheet, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon3 from 'react-native-vector-icons/FontAwesome5';
 import Icon2 from 'react-native-vector-icons/Feather';
-import RNPickerSelect from 'react-native-picker-select'; 
+import RNPickerSelect from 'react-native-picker-select';
 
 const backgroundImage = { uri: 'https://anhdepfree.com/wp-content/uploads/2018/11/Blue-Wallpaper-hinh-nen-mau-xanh-27.jpg' };
 
 const AppointmentForm = () => {
   const [specialty, setSpecialty] = useState('');
+  const [doctor, setDoctor] = useState(''); 
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [patient, setPatient] = useState('');
   const [notes, setNotes] = useState('');
+  const [doctors, setDoctors] = useState([]); 
 
-  const specialties = [
-    { label: 'Khám Sức Khỏe Không Xét Nghiệm', value: 'Khám Sức Khỏe Không Xét Nghiệm' },
-    { label: 'Khám Sức Khỏe Có Xét Nghiệm', value: 'Khám Sức Khỏe Có Xét Nghiệm' },
-  ];
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const response = await fetch('http://192.168.0.100:4000/get-all-doctor'); 
+        const result = await response.json();
 
-  const times = [
-    { label: '15:00-15:30', value: '15:00-15:30' },
-    { label: '15:30-16:00', value: '15:30-16:00' },
-  ];
+        if (result.success) {
+          const doctorList = result.data.map(doctor => ({
+            label: doctor.name, 
+            value: doctor.id,  
+          }));
+
+          setDoctors(doctorList); 
+        } else {
+          console.error('Failed to fetch doctors');
+        }
+      } catch (error) {
+        console.error('Error fetching doctors:', error);
+      }
+    };
+
+    fetchDoctors();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -38,6 +53,7 @@ const AppointmentForm = () => {
         </View>
       </ImageBackground>
       <ScrollView>
+        {/* Patient Name */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Họ và tên <Text style={styles.asterisk}>*</Text></Text>
           <View style={styles.inputContainer}>
@@ -51,6 +67,7 @@ const AppointmentForm = () => {
           </View>
         </View>
 
+        {/* Date of Birth */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Ngày sinh <Text style={styles.asterisk}>*</Text></Text>
           <View style={styles.inputContainer}>
@@ -64,13 +81,17 @@ const AppointmentForm = () => {
           </View>
         </View>
 
+        {/* Gender (Specialty) */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Giới tính <Text style={styles.asterisk}>*</Text></Text>
-          <View style={styles.inputContainer}>
+          <View style={styles.inputContainer} >
             <Icon name="user" size={16} color="#00B5F1" style={styles.icon} />
-             <RNPickerSelect 
+            <RNPickerSelect
               onValueChange={(value) => setSpecialty(value)}
-              items={specialties}
+              items={[
+                { label: 'Nam', value: 'Nam' },
+                { label: 'Nữ', value: 'Nữ' },
+              ]}
               value={specialty}
               style={pickerSelectStyles}
             />
@@ -78,21 +99,21 @@ const AppointmentForm = () => {
           </View>
         </View>
 
+        {/* Phone */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Điện thoại <Text style={styles.asterisk}>*</Text></Text>
           <View style={styles.inputContainer}>
             <Icon name="phone" size={16} color="#00B5F1" style={styles.icon} />
             <TextInput
-              onValueChange={(value) => setTime(value)}
-              items={times}
-              value={time}
               style={styles.input}
+              value={time}
+              onChangeText={setTime}
               placeholder="Vd: 0293373737"
             />
-
           </View>
         </View>
 
+        {/* Email */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Email <Text style={styles.asterisk}>*</Text></Text>
           <View style={styles.inputContainer}>
@@ -106,54 +127,43 @@ const AppointmentForm = () => {
           </View>
         </View>
 
-        <View style={styles.formGroup}>
-          <Text style={styles.label}>Địa chỉ khám <Text style={styles.asterisk}>*</Text></Text>
-          <View style={styles.inputContainer}>
-            <Icon name="map" size={16} color="#00B5F1" style={styles.icon} />
-            <RNPickerSelect
-              onValueChange={(value) => setSpecialty(value)}
-              items={specialties}
-              value={specialty}
-              style={pickerSelectStyles}
-            />
-            <Icon2 name="chevron-right" size={20} color="#000" style={styles.icon2} />
-          </View>
-        </View>
-
+        {/* Doctor Selection */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Bác sĩ <Text style={styles.asterisk}>*</Text></Text>
           <View style={styles.inputContainer}>
             <Icon name="user-plus" size={16} color="#00B5F1" style={styles.icon} />
             <RNPickerSelect
-              onValueChange={(value) => setSpecialty(value)}
-              items={specialties}
-              value={specialty}
+              onValueChange={(value) => setDoctor(value)} // Update doctor state when selected
+              items={doctors} // Populate the picker with doctors
+              value={doctor}
               style={pickerSelectStyles}
             />
             <Icon2 name="chevron-right" size={20} color="#000" style={styles.icon2} />
           </View>
         </View>
 
+        {/* Date of Appointment */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Ngày khám <Text style={styles.asterisk}>*</Text></Text>
           <View style={styles.inputContainer}>
             <Icon name="calendar" size={16} color="#00B5F1" style={styles.icon} />
             <RNPickerSelect
               onValueChange={(value) => setSpecialty(value)}
-              items={specialties}
+              items={specialty}
               value={specialty}
               style={pickerSelectStyles}
             />
           </View>
         </View>
 
+        {/* Time Selection */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Giờ <Text style={styles.asterisk}>*</Text></Text>
           <View style={styles.inputContainer}>
             <Icon3 name="stopwatch" size={16} color="#00B5F1" style={styles.icon} />
             <RNPickerSelect
               onValueChange={(value) => setSpecialty(value)}
-              items={specialties}
+              items={time}
               value={specialty}
               style={pickerSelectStyles}
             />
@@ -161,8 +171,7 @@ const AppointmentForm = () => {
           </View>
         </View>
 
-       
-
+        {/* Notes */}
         <View style={styles.formGroup2}>
           <Text style={styles.label}>Nội dung hẹn khám</Text>
           <View style={styles.inputContainer}>
@@ -176,6 +185,8 @@ const AppointmentForm = () => {
           </View>
         </View>
       </ScrollView>
+
+      {/* Submit Button */}
       <View style={styles.navbar}>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Đặt lịch khám</Text>
@@ -271,6 +282,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     flexDirection: 'row', // Align the icon and input horizontally
     alignItems: 'center',
+    
   },
   input: {
     width: '100%',

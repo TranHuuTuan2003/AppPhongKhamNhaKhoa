@@ -1,50 +1,31 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, ImageBackground ,length} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icon3 from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Feather';
+import axios from 'axios';  
 
 const backgroundImage = { uri: 'https://anhdepfree.com/wp-content/uploads/2018/11/Blue-Wallpaper-hinh-nen-mau-xanh-27.jpg' };
-const doctors = [
-  {
-    name: 'GS.TS.BS Hà Văn Quyết',
-    image: 'https://storage.googleapis.com/a1aa/image/ggGbZCSu0t5AD1g00iJ7ysFGWbM6HfbCC7HNsOfMMfC646fOB.jpg',
-    address: '34 Đại Cồ Việt, Lê Đại Hành, Hai Bà Trưng, Hà Nội, Việt Nam',
-    specialty: 'Tiêu hóa - Gan mật tụy',
-    phone: '038376433',
-  },
-  {
-    name: 'PGS.TS.BS Kiều Đình Hùng',
-    image: 'https://storage.googleapis.com/a1aa/image/hemSWU43xOSsB66aidudPm5qqWZnJvcKeaBRza6ZTtkbc9vTA.jpg',
-    address: '14 Trần Bình Trọng, Trần Hưng Đạo, Hai Bà Trưng, Hà Nội, Việt Nam',
-    specialty: 'Chấn thương chỉnh hình - Cột sống',
-    phone: '038376433',
-  },
-  {
-    name: 'PGS.TS.BS Nguyễn Trọng',
-    image: 'https://storage.googleapis.com/a1aa/image/EkVpHBKCJlLjIprz8b9wES3UiHIVq1fTJMNecYQZkeflx1fdC.jpg',
-    address: '52 Bà Triệu, Trần Hưng Đạo, Hoàn Kiếm, Hà Nội, Việt Nam',
-    specialty: 'Nội Thần kinh',
-    phone: '038376433',
-  }, {
-    name: 'PGS.TS.BS Bảo Nam',
-    image: 'https://nguoinoitieng.tv/images/nnt/106/0/bi95.jpg',
-    address: '52 Bà Triệu, Trần Hưng Đạo, Hoàn Kiếm, Hà Nội, Việt Nam',
-    specialty: 'Nội Thần kinh',
-    phone: '038376433',
-  },
-  {
-    name: 'PGS.TS.BS Nguyễn An',
-    image: 'https://img4.thuthuatphanmem.vn/uploads/2021/01/10/hinh-anh-anh-bac-si-cuoi-rat-tuoi_021520571.jpg',
-    address: '52 Bà Triệu, Trần Hưng Đạo, Hoàn Kiếm, Hà Nội, Việt Nam',
-    specialty: 'Nội Thần kinh',
-    phone: '038376433',
-  }
-];
 
-export default function DoctorSearchScreen({navigation}) {
+export default function DoctorSearchScreen({ navigation }) {
   const [searchText, setSearchText] = useState('');
-  const [filteredDoctors, setFilteredDoctors] = useState(doctors);
+  const [doctors, setDoctors] = useState([]);  
+  const [filteredDoctors, setFilteredDoctors] = useState([]);
+  
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const response = await axios.get('http://192.168.0.100:4000/get-all-doctor');
+        const fetchedDoctors = response.data.data; 
+        setDoctors(fetchedDoctors);  
+        setFilteredDoctors(fetchedDoctors);  
+      } catch (error) {
+        console.error('Error fetching doctors:', error);
+      }
+    };
+
+    fetchDoctors();
+  }, []);
 
   const handleSearch = (text) => {
     setSearchText(text);
@@ -63,30 +44,28 @@ export default function DoctorSearchScreen({navigation}) {
     <View style={styles.container}>
       {/* Search Bar */}
       <ImageBackground
-          source={backgroundImage}
-          style={styles.background}
-          resizeMode="cover"
-        >
-      <View style={styles.searchBar}>
-      <View style={{ flexDirection: 'row'}}>
-          <Icon2 name="chevron-left" size={20} color="#00B5F1" style={styles.headerText2} />
-        <Text style={styles.headerText}>Danh sách bác sĩ</Text>
-        <Icon3 name="home" size={20} color="#00B5F1" style={styles.headerText3} />
-        </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center'}}>
-        <TextInput
+        source={backgroundImage}
+        style={styles.background}
+        resizeMode="cover"
+      >
+        <View style={styles.searchBar}>
+          <View style={{ flexDirection: 'row' }}>
+            <Icon2 name="chevron-left" size={20} color="#00B5F1" style={styles.headerText2} />
+            <Text style={styles.headerText}>Danh sách bác sĩ</Text>
+            <Icon3 name="home" size={20} color="#00B5F1" style={styles.headerText3} />
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <TextInput
               style={[styles.searchInput]}
               placeholderTextColor="white"
               placeholder="Nhập tên bác sĩ ..."
               value={searchText}
-              onChangeText={handleSearch} // Gọi hàm tìm kiếm khi người dùng nhập
+              onChangeText={handleSearch} 
             />
-      </View>
-      <Icon2 name="search" size={20} color="#00B5F1" style={styles.iconsearch} />
-      </View>
-
+          </View>
+          <Icon2 name="search" size={20} color="#00B5F1" style={styles.iconsearch} />
+        </View>
       </ImageBackground>
-      
 
       {/* Doctor Cards */}
       <ScrollView style={{ padding: 10 }}>
@@ -96,7 +75,7 @@ export default function DoctorSearchScreen({navigation}) {
               <View style={styles.doctorCard2}>
                 <Image source={{ uri: doctor.image }} style={styles.doctorImage} />
                 <View style={styles.doctorInfo}>
-                  <Text style={styles.doctorName}>{doctor.name}</Text>
+                  <Text style={styles.doctorName} numberOfLines={1}>{doctor.name}</Text>
                   <TouchableOpacity style={styles.bookButton}>
                     <Icon name="calendar-alt" size={14} color="white" />
                     <Text style={styles.bookButtonText}> Đặt lịch</Text>
@@ -106,14 +85,12 @@ export default function DoctorSearchScreen({navigation}) {
                   <Icon name="heart" size={20} color="gray" />
                 </TouchableOpacity>
               </View>
-              <Text style={styles.address}>
+              <Text style={styles.address} numberOfLines={1}>
                 <Icon name="map-marker-alt" size={12} color="gray" /> {doctor.address}
               </Text>
-              {doctor.specialty && (
-                <Text style={styles.specialty}>
-                  <Icon name="stethoscope" size={12} color="gray" /> {doctor.specialty}
-                </Text>
-              )}
+              <Text style={styles.specialty} numberOfLines={2}>
+                <Icon name="info-circle" size={12} color="gray" /> {doctor.description}
+              </Text>
               {doctor.phone && (
                 <Text style={styles.phone}>
                   <Icon name="phone" size={12} color="gray" /> {doctor.phone}
@@ -122,29 +99,35 @@ export default function DoctorSearchScreen({navigation}) {
             </View>
           ))
         ) : (
-          <Text style={{flex: 1, justifyContent: 'center',textAlign:'center',top:20}}>Không tìm thấy bác sĩ nào.</Text>
+          <Text style={{ flex: 1, justifyContent: 'center', textAlign: 'center', top: 20 }}>
+            Không tìm thấy bác sĩ nào.
+          </Text>
         )}
         <View style={{ marginBottom: 140 }}></View>
       </ScrollView>
+
+      {/* Navigation bar */}
       <View style={styles.navbar}>
         <View style={styles.navbarItem}>
-          <Icon2 name="home" size={24} color="#2F363D" onPress={() => { navigation.navigate('Trangchu' )}} />
+          <Icon2 name="home" size={24} color="#2F363D" onPress={() => { navigation.navigate('Trangchu') }} />
           <Text style={styles.navbarText}>Trang chủ</Text>
         </View>
         <View style={styles.navbarItem}>
-          <Icon2 name="user-plus" size={24} color="#2F363D"  onPress={() => { navigation.navigate('BacSi' )}}/>
+          <Icon2 name="user-plus" size={24} color="#2F363D" onPress={() => { navigation.navigate('BacSi') }} />
           <Text style={styles.navbarText}>Bác sĩ</Text>
         </View>
-        <View  style={{alignItems: 'center',marginLeft:65}} >
+        <View style={{ alignItems: 'center', marginLeft: 65 }}>
           <Icon2 name="search" size={24} color="#2F363D" />
           <Text style={styles.navbarText}>Theo dõi</Text>
         </View>
-        <TouchableOpacity style={styles.navbarItem} onPress={() => { navigation.navigate('Profile' )}}>
+        <TouchableOpacity style={styles.navbarItem} onPress={() => { navigation.navigate('Profile') }}>
           <Icon2 name="user" size={24} color="#2F363D" />
           <Text style={styles.navbarText}>Tài khoản</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.floatingButton} onPress={() => { navigation.navigate('DatLichKham' )}}>
+
+      {/* Floating button */}
+      <TouchableOpacity style={styles.floatingButton} onPress={() => { navigation.navigate('DatLichKham') }}>
         <Icon3 name="calendar" size={30} color="#FFFFFF" />
       </TouchableOpacity>
     </View>
