@@ -298,7 +298,8 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#333333',
     width: 100,
-  },
+},
+
   banner: {
     position: 'absolute',
     top: 22,

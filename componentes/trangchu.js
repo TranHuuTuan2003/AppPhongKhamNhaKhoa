@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet, ScrollView, ImageBackground, TouchableWithoutFeedback } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity } from 'react-native';
@@ -14,6 +14,70 @@ const backgroundImage = {
 
 export default function HospitalApp({ navigation }) {
     const [isNavbarVisible, setIsNavbarVisible] = useState(false);
+    const [doctorData, setDoctorData] = useState([]);
+     const [newData, setNewData] = useState([]);
+     const [services, setServices] = useState([]);
+
+    useEffect(() => {
+       
+        const fetchDoctors = async () => {
+            try {
+                const response = await fetch('http://192.168.0.100:4000/get-top-6-doctor');
+                const result = await response.json();
+                if (result.success) {
+                    // Assuming the API returns an array of doctor objects with 'image' and 'name'
+                    setDoctorData(result.data);
+                } else {
+                    console.error('Failed to fetch doctors:', result.error);
+                }
+            } catch (error) {
+                console.error('Error fetching doctors:', error);
+            }
+        };
+
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://192.168.0.100:4000/get-top-6-news');
+                const result = await response.json();
+
+                if (result.success) {
+                    const formattedData = result.data.map(news => ({
+                        ...news,
+                        created_at: new Date(news.created_at).toISOString().split('T')[0], // Extract YYYY-MM-DD
+                    }));
+                    setNewData(formattedData);
+                } else {
+                    console.error('Failed to fetch news:', result.error);
+                }
+            } catch (error) {
+                console.error('Error fetching news:', error);
+            }
+        };
+        
+        const fetchServices = async () => {
+            try {
+                const response = await fetch('http://192.168.0.100:4000/get-all-services-top');
+                const result = await response.json();
+
+                if (result.success) {
+                    // Assuming API returns an array of services with name and avatar
+                    const formattedServices = result.data.map(service => ({
+                        name: service.name,
+                        avatar: service.avatar,
+                    }));
+                    setServices(formattedServices);
+                } else {
+                    console.error('Error fetching services:', result.error);
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
+
+        fetchServices();
+        fetchData();
+        fetchDoctors();
+    }, []);
 
     const handleOutsidePress = () => {
         if (isNavbarVisible) {
@@ -64,31 +128,28 @@ export default function HospitalApp({ navigation }) {
                     </View>
 
                     <ScrollView
-                        showsHorizontalScrollIndicator={false}
-                        horizontal
-                        style={styles.horizontalScrollContainer2}
-                    >
-                        <View style={styles.cardContainer}>
-                            {doctorData.map((doctor, index) => (
-                                <View key={index} style={styles.card}>
-                                    <View style={styles.banner}>
-                                        <Text style={styles.bannerText}>Mới nhất</Text>
-                                    </View>
-                                    <Image style={styles.image} source={{ uri: doctor.logo }} />
-                                    <Text style={styles.title3}>{doctor.name}</Text>
-
-                                    <TouchableOpacity
-                                        style={styles.button}
-                                        onPress={() => {
-                                            alert('Scheduling appointment...');
-                                        }}
-                                    >
-                                        <Text style={styles.buttonText}>Đặt lịch bệnh viện</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            ))}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            style={styles.horizontalScrollContainer}
+        >
+            <View style={styles.cardContainer}>
+                {doctorData.map((doctor, index) => (
+                    <View key={index} style={styles.card}>
+                        <View style={styles.banner}>
+                            <Text style={styles.bannerText}>Mới nhất</Text>
                         </View>
-                    </ScrollView>
+                        <Image style={styles.image} source={{ uri: doctor.image }} />
+                        <Text style={styles.title3}>{doctor.name}</Text>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => alert('Scheduling appointment...')}
+                        >
+                            <Text style={styles.buttonText}>Đặt lịch bệnh viện</Text>
+                        </TouchableOpacity>
+                    </View>
+                ))}
+            </View>
+        </ScrollView>
 
                     <View style={[styles.doctor, { flexDirection: 'row' }]}>
                         <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#003366' }}>Tin tức nổi bật</Text>
@@ -98,33 +159,33 @@ export default function HospitalApp({ navigation }) {
                     </View>
 
                     <ScrollView
-                        showsHorizontalScrollIndicator={false}
-                        horizontal
-                        style={styles.horizontalScrollContainer}
-                    >
-                        {newData.map((news, index) => (
-                            <View key={index} style={styles.cardNew}>
-                                <View style={styles.badge}>
-                                    <Text style={styles.badgeText}>Nổi bật</Text>
-                                </View>
-                                <Image source={{ uri: news.logo }} style={styles.cardImage} />
-                                <Text style={styles.cardTitle} numberOfLines={2} ellipsizeMode="tail">
-                                    {news.name}
-                                </Text>
-                                <Text style={styles.cardDescription}>
-                                    <Icon name="calendar" size={13} color="#2F363D" /> {news.date}
-                                </Text>
-                                <Text style={styles.cardDescription}>
-                                    <Icon name="eye" size={13} color="#2F363D" /> {news.View}
-                                </Text>
-                                <View style={{ padding: 10 }}>
-                                    <TouchableOpacity style={styles.button}>
-                                        <Text style={styles.buttonText}>Xem ngay</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                        ))}
-                    </ScrollView>
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            style={styles.horizontalScrollContainer}
+        >
+            {newData.map((news, index) => (
+                <View key={index} style={styles.cardNew}>
+                    <View style={styles.badge}>
+                        <Text style={styles.badgeText}>Nổi bật</Text>
+                    </View>
+                    <Image source={{ uri: news.avatar }} style={styles.cardImage} />
+                    <Text style={styles.cardTitle} numberOfLines={2} ellipsizeMode="tail">
+                        {news.name}
+                    </Text>
+                    <Text style={styles.cardDescription}>
+                        <Icon name="calendar" size={13} color="#2F363D" /> {news.created_at}
+                    </Text>
+                    <Text style={styles.cardDescription}>
+                        <Icon name="eye" size={13} color="#2F363D" /> {news.view}
+                    </Text>
+                    <View style={{ padding: 10 }}>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.buttonText}>Xem ngay</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            ))}
+        </ScrollView>
                     <View style={[styles.doctor, { flexDirection: 'row' }]}>
                         <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#003366' }}>Dịch vụ cung cấp</Text>
                         <Text style={{ fontSize: 15, marginLeft: 121, marginTop: 8, color: '#00B5F1' }}>
@@ -133,10 +194,10 @@ export default function HospitalApp({ navigation }) {
                     </View>
 
                     <View style={styles.scrollContainer}>
-                        {services.map((service, index) => (
+                                {services.map((service, index) => (
                             <View key={index} style={styles.serviceBox}>
-                                <Image source={{ uri: service.icon }} style={styles.icon} />
-                                <Text style={styles.textservice}>{service.title}</Text>
+                                <Image source={{ uri: service.avatar }} style={styles.icon} />
+                                <Text style={styles.textservice}>{service.name}</Text>
                             </View>
                         ))}
                     </View>
@@ -252,64 +313,6 @@ export default function HospitalApp({ navigation }) {
         </View>
     );
 }
-const doctorData = [
-    {
-        name: 'Thạc sĩ, Bác sĩ Nguyễn Quang Tiến',
-        logo: 'https://cdn1.youmed.vn/tin-tuc/wp-content/uploads/2022/08/BS-Nguyen-Tan-Phuoc-Thinh-scaled.jpg'
-    },
-    {
-        name: 'Thạc sĩ, Bác sĩ Phan Bảo Mỹ',
-        logo: 'https://nguoinoitieng.tv/images/nnt/102/0/bga5.jpg'
-    },
-    {
-        name: 'Thạc sĩ, Bác sĩ Nguyễn Quang Hùng',
-        logo: 'http://baohagiang.vn/file/4028eaa4679b32c401679c0c74382a7e/052023/image001_20230511082556.png'
-    },
-    {
-        name: 'Thạc sĩ, Bác sĩ Phạm Bảo Trung',
-        logo: 'https://taimuihongsg.com/wp-content/uploads/2019/01/Trinh-Tan-Lap_taimuihongsg.jpg'
-    }
-];
-
-const services = [
-    {
-        title: 'Trồng răng sứ Veneer',
-        icon: 'https://nhakhoakim.com/wp-content/uploads/2019/05/icon-nho-rang-khon-1.png'
-    },
-    {
-        title: 'Bọc răng sứ',
-        icon: 'https://nhakhoakim.com/wp-content/uploads/2019/05/icon-boc-rang-su-1.png'
-    },
-    {
-        title: 'Điều trị tủy',
-        icon: 'https://nhakhoakim.com/wp-content/uploads/2019/05/dieu-tri-tuy.png'
-    },
-    {
-        title: 'Cấy ghép Implant',
-        icon: 'https://nhakhoakim.com/wp-content/uploads/2019/05/trong-rang-implant.png'
-    }
-];
-
-const newData = [
-    {
-        name: '7 địa chỉ căng chỉ da mặt uy tín Hà Nội: Được cấp phép',
-        logo: 'https://i1-suckhoe.vnecdn.net/2024/03/08/image003-1709871326-5896-1709871386.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=T8BLEIChVhXZHubhMcfihA',
-        date: '23/04/2021',
-        View: '23,445'
-    },
-    {
-        name: 'DR.REJU - địa chỉ tin cậy với 5 năm chuyên sâu điều trị sẹo',
-        logo: 'https://i1-suckhoe.vnecdn.net/2023/12/13/image-extractword-2-out-9017-1-1905-3088-1702459519.png?w=500&h=300&q=100&dpr=2&fit=crop&s=qr89eeMw9t-m2yvygOs4EQ',
-        date: '23/04/2021',
-        View: '23,445'
-    },
-    {
-        name: 'Răng sứ thẩm mỹ tại S-Dental - Lựa chọn tiết kiệm cho bạn',
-        logo: 'https://i1-suckhoe.vnecdn.net/2018/04/12/rngkhn-1523513607.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=buabr-jZ1EjWP0SJqf8GHg',
-        date: '23/04/2021',
-        View: '23,445'
-    }
-];
 
 const partnersData = [
     {

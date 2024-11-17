@@ -9,26 +9,27 @@ const backgroundImage = { uri: 'https://anhdepfree.com/wp-content/uploads/2018/1
 
 const AppointmentForm = () => {
   const [specialty, setSpecialty] = useState('');
-  const [doctor, setDoctor] = useState(''); 
+  const [doctor, setDoctor] = useState('');
+  const [map, setMap] = useState([]);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
+  const [phone, setPhone] = useState('');
   const [patient, setPatient] = useState('');
   const [notes, setNotes] = useState('');
-  const [doctors, setDoctors] = useState([]); 
+  const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await fetch('http://192.168.0.100:4000/get-all-doctor'); 
+        const response = await fetch('http://192.168.0.100:4000/get-all-doctor');
         const result = await response.json();
 
         if (result.success) {
-          const doctorList = result.data.map(doctor => ({
-            label: doctor.name, 
-            value: doctor.id,  
+          const doctorList = result.data.map((doctor) => ({
+            label: doctor.name,
+            value: doctor.id,
           }));
-
-          setDoctors(doctorList); 
+          setDoctors(doctorList);
         } else {
           console.error('Failed to fetch doctors');
         }
@@ -84,7 +85,7 @@ const AppointmentForm = () => {
         {/* Gender (Specialty) */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Giới tính <Text style={styles.asterisk}>*</Text></Text>
-          <View style={styles.inputContainer} >
+          <View style={styles.inputContainer}>
             <Icon name="user" size={16} color="#00B5F1" style={styles.icon} />
             <RNPickerSelect
               onValueChange={(value) => setSpecialty(value)}
@@ -93,9 +94,14 @@ const AppointmentForm = () => {
                 { label: 'Nữ', value: 'Nữ' },
               ]}
               value={specialty}
+              placeholder={{
+                label: 'Chọn giới tính...',
+                value: null,
+              }}
               style={pickerSelectStyles}
+              useNativeAndroidPickerStyle={false}
+              Icon={() => <Icon2 name="chevron-down" size={20} color="#888" />}
             />
-            <Icon2 name="chevron-right" size={20} color="#000" style={styles.icon2} />
           </View>
         </View>
 
@@ -106,8 +112,8 @@ const AppointmentForm = () => {
             <Icon name="phone" size={16} color="#00B5F1" style={styles.icon} />
             <TextInput
               style={styles.input}
-              value={time}
-              onChangeText={setTime}
+              value={phone}
+              onChangeText={setPhone}
               placeholder="Vd: 0293373737"
             />
           </View>
@@ -126,48 +132,81 @@ const AppointmentForm = () => {
             />
           </View>
         </View>
-
+        <View style={styles.formGroup}>
+          <Text style={styles.label}>Địa chỉ khám <Text style={styles.asterisk}>*</Text></Text>
+          <View style={styles.inputContainer}>
+            <Icon name="user-plus" size={16} color="#00B5F1" style={styles.icon} />
+            <RNPickerSelect
+              onValueChange={(value) => setMap(value)}
+              items={[
+                { label: 'Nam', value: 'Nam' },
+                { label: 'Nữ', value: 'Nữ' },
+              ]}
+              value={map}
+              placeholder={{
+                label: 'Chọn địa chỉ...',
+                value: null,
+              }}
+              style={pickerSelectStyles}
+              useNativeAndroidPickerStyle={false}
+              Icon={() => <Icon2 name="chevron-down" size={20} color="#888" />}
+            />
+          </View>
+        </View>
         {/* Doctor Selection */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Bác sĩ <Text style={styles.asterisk}>*</Text></Text>
           <View style={styles.inputContainer}>
             <Icon name="user-plus" size={16} color="#00B5F1" style={styles.icon} />
             <RNPickerSelect
-              onValueChange={(value) => setDoctor(value)} // Update doctor state when selected
-              items={doctors} // Populate the picker with doctors
+              onValueChange={(value) => setDoctor(value)}
+              items={doctors}
               value={doctor}
+              placeholder={{
+                label: 'Chọn bác sĩ...',
+                value: null,
+              }}
               style={pickerSelectStyles}
+              useNativeAndroidPickerStyle={false}
+              Icon={() => <Icon2 name="chevron-down" size={20} color="#888" />}
             />
-            <Icon2 name="chevron-right" size={20} color="#000" style={styles.icon2} />
           </View>
         </View>
 
-        {/* Date of Appointment */}
         <View style={styles.formGroup}>
-          <Text style={styles.label}>Ngày khám <Text style={styles.asterisk}>*</Text></Text>
+          <Text style={styles.label}>Ngày đặt<Text style={styles.asterisk}>*</Text></Text>
           <View style={styles.inputContainer}>
             <Icon name="calendar" size={16} color="#00B5F1" style={styles.icon} />
-            <RNPickerSelect
-              onValueChange={(value) => setSpecialty(value)}
-              items={specialty}
-              value={specialty}
-              style={pickerSelectStyles}
+            <TextInput
+              style={styles.input}
+              value={patient}
+              onChangeText={setPatient}
+              placeholder="Vd: tranhuutuan@gmail.com"
             />
           </View>
         </View>
 
-        {/* Time Selection */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Giờ <Text style={styles.asterisk}>*</Text></Text>
           <View style={styles.inputContainer}>
-            <Icon3 name="stopwatch" size={16} color="#00B5F1" style={styles.icon} />
+            <Icon name="calendar" size={16} color="#00B5F1" style={styles.icon} />
             <RNPickerSelect
-              onValueChange={(value) => setSpecialty(value)}
-              items={time}
-              value={specialty}
+              onValueChange={(value) => setTime(value)}
+              items={[
+                { label: '08:00 - 10:00',  value: '08:00 - 10:00' },
+                { label: '10:00 - 12:00', value: '10:00 - 12:00' },
+                { label: '14:00 - 16:00', value: '14:00 - 16:00' },
+                { label: '16:00 - 18:00', value: '16:00 - 18:00' },
+              ]}
+              value={time}
+              placeholder={{
+                label: 'Chọn khung giờ...',
+                value: null,
+              }}
               style={pickerSelectStyles}
+              useNativeAndroidPickerStyle={false}
+              Icon={() => <Icon2 name="chevron-down" size={20} color="#888" />}
             />
-            <Icon2 name="chevron-right" size={20} color="#000" style={styles.icon2} />
           </View>
         </View>
 
@@ -220,7 +259,15 @@ const pickerSelectStyles = StyleSheet.create({
     width: '100%',
     paddingLeft: 35,  // Align the text similar to TextInput
   },
+  placeholder: {
+    color: '#888',
+  },
+  iconContainer: {
+    top: 12,
+    right: 10,
+  },
 });
+
 
 const styles = StyleSheet.create({
   container: {
@@ -249,6 +296,7 @@ const styles = StyleSheet.create({
   background: {
     height: 100,
     alignItems: 'center',
+    width:'100%'
   },
   headerText: {
     color: '#fff',
@@ -296,16 +344,17 @@ const styles = StyleSheet.create({
   },
   icon: {
     position: 'absolute',
-    left: 10, // Place icon on the left side of the TextInput
-    top: '50%', // Center the icon vertically
-    transform: [{ translateY: -10 }], // Fine-tune the icon's vertical alignment
+    left: 10, 
+    alignContent:'center', 
+    top: '50%',
+    transform: [{ translateY: -10 }], 
     zIndex: 2,
   },
   icon2: {
     position: 'absolute',
-    left: 343, // Place icon on the left side of the TextInput
+    left: 343, 
     top: '50%', // Center the icon vertically
-    transform: [{ translateY: -10 }], // Fine-tune the icon's vertical alignment
+    transform: [{ translateY: -10 }], 
     zIndex: 2,
   },
   button: {
