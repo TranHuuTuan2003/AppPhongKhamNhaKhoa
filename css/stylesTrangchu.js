@@ -398,6 +398,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black background
     zIndex: 1, // Make sure it's on top of the content
   },
+  navbarText2: {
+    fontSize: 14,
+    color: '#00B5F1',
+  },
 });
 
 export default styles;

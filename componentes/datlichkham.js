@@ -1,51 +1,180 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, ScrollView, View, Text, TextInput, StyleSheet, ImageBackground } from 'react-native';
+import {
+  Platform,
+  KeyboardAvoidingView,
+  TouchableOpacity,
+  ScrollView,
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  ImageBackground,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Icon3 from 'react-native-vector-icons/FontAwesome5';
 import Icon2 from 'react-native-vector-icons/Feather';
 import RNPickerSelect from 'react-native-picker-select';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import axios from 'axios';
+import Toast from 'react-native-toast-message';  // Import Toast
+import styles from '../css/stylesDatLichKham';
 
 const backgroundImage = { uri: 'https://anhdepfree.com/wp-content/uploads/2018/11/Blue-Wallpaper-hinh-nen-mau-xanh-27.jpg' };
 
 const AppointmentForm = () => {
   const [specialty, setSpecialty] = useState('');
   const [doctor, setDoctor] = useState('');
-  const [map, setMap] = useState([]);
-  const [date, setDate] = useState('');
+  const [map, setMap] = useState(null);
+  const [dateOfBirth, setDateOfBirth] = useState(new Date());
+  const [appointmentDate, setAppointmentDate] = useState(new Date());
   const [time, setTime] = useState('');
   const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [patient, setPatient] = useState('');
   const [notes, setNotes] = useState('');
   const [doctors, setDoctors] = useState([]);
+  const [clinicList, setClinicList] = useState([]);
+  const [showDOBPicker, setShowDOBPicker] = useState(false);
+  const [showAppointmentDatePicker, setShowAppointmentDatePicker] = useState(false);
 
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await fetch('http://192.168.0.100:4000/get-all-doctor');
-        const result = await response.json();
-
-        if (result.success) {
-          const doctorList = result.data.map((doctor) => ({
+        const response = await axios.get('http://192.168.0.100:4000/get-all-doctor');
+        if (response.data.success) {
+          const doctorList = response.data.data.map((doctor) => ({
             label: doctor.name,
             value: doctor.id,
           }));
           setDoctors(doctorList);
         } else {
-          console.error('Failed to fetch doctors');
+          console.error('Failed to fetch doctors:', response.data.error);
         }
       } catch (error) {
-        console.error('Error fetching doctors:', error);
+        console.error('Error fetching doctors:', error.message);
+      }
+    };
+
+    const fetchClinicList = async () => {
+      try {
+        const response = await axios.get('http://192.168.0.100:4000/get-list-clinic');
+        if (response.data.success) {
+          const formattedData = response.data.data.map((item) => ({
+            label: item.name,
+            value: item.id,
+          }));
+          setClinicList(formattedData);
+        }
+      } catch (error) {
+        console.error('Error fetching clinic list:', error.message);
       }
     };
 
     fetchDoctors();
+    fetchClinicList();
   }, []);
 
+  const handleDateChange = (event, selectedDate, type) => {
+    const currentDate = selectedDate || (type === 'dob' ? dateOfBirth : appointmentDate);
+    type === 'dob' ? setDateOfBirth(currentDate) : setAppointmentDate(currentDate);
+    type === 'dob' ? setShowDOBPicker(false) : setShowAppointmentDatePicker(false);
+  };
+
+  const formatDate = (date) => {
+    return `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}/${date.getFullYear()}`;
+  };
+
+  const resetForm = () => {
+    setSpecialty('');
+    setDoctor('');
+    setMap(null);
+    setDateOfBirth(new Date());
+    setAppointmentDate(new Date());
+    setTime('');
+    setPhone('');
+    setEmail('');
+    setPatient('');
+    setNotes('');
+  };
+
+  const handleBooking = async () => {
+    if (!patient || !phone || !email || !specialty || !doctor || !map || !appointmentDate || !time) {
+      Toast.show({
+        type: 'error',
+        position: 'top',
+        text1: 'Thông báo',
+        text2: 'Vui lòng điền đầy đủ thông tin bắt buộc!',
+        visibilityTime: 5000,
+        autoHide: true,
+        style: {
+          backgroundColor: '#FF4D4D', // Red background for error
+          padding: 20, // More padding
+          borderRadius: 10, // Rounded corners
+          alignSelf: 'center', // Center alignment
+          marginTop: 20, // Margin from top
+        },
+        textStyle: {
+          fontSize: 18,
+          color: 'white',
+          fontWeight: 'bold',
+        },
+      });
+      
+      return;
+    }
+
+    const bookingData = {
+      status: 'Chờ xác nhận',
+      doctor_id: doctor,
+      patient_name: patient,
+      booking_date: appointmentDate.toISOString().split('T')[0],
+      booking_time: time,
+      notes,
+      booking_email: email,
+      booking_phone: phone,
+      clinic_id: map,
+      booking_sex: specialty,
+    };
+
+    try {
+      const response = await axios.post('http://192.168.0.100:4000/insert-booking', bookingData);
+      if (response.data.success) {
+        Toast.show({
+          type: 'success',
+          position: 'top',
+          text1: 'Đặt lịch thành công!',
+          visibilityTime: 5000,
+          autoHide: true,
+        });
+        resetForm();
+      } else {
+        Toast.show({
+          type: 'error',
+          position: 'top',
+          text1: 'Lỗi khi đặt lịch',
+          text2: `Lỗi: ${response.data.error || 'Không rõ lỗi'}`,
+          visibilityTime: 5000,
+          autoHide: true,
+        });
+      }
+    } catch (error) {
+      console.error('Error booking appointment:', error.message);
+      Toast.show({
+        type: 'error',
+        position: 'top',
+        text1: 'Lỗi khi kết nối tới server!',
+        visibilityTime: 5000,
+        autoHide: true,
+      });
+    }
+  };
   return (
+  
     <View style={styles.container}>
       <ImageBackground
         source={backgroundImage}
-        style={styles.background}
+        style={{height:90,alignItems:'center'}}
         resizeMode="cover"
       >
         <View style={{ flexDirection: 'row' }}>
@@ -53,9 +182,13 @@ const AppointmentForm = () => {
           <Text style={styles.headerText}>Đặt lịch khám</Text>
         </View>
       </ImageBackground>
+      < KeyboardAvoidingView
+    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    style={styles.container}
+  >
       <ScrollView>
         {/* Patient Name */}
-        <View style={styles.formGroup}>
+        <View style={[styles.formGroup,{top:10}]}>
           <Text style={styles.label}>Họ và tên <Text style={styles.asterisk}>*</Text></Text>
           <View style={styles.inputContainer}>
             <Icon name="user" size={16} color="#00B5F1" style={styles.icon} />
@@ -68,20 +201,26 @@ const AppointmentForm = () => {
           </View>
         </View>
 
-        {/* Date of Birth */}
         <View style={styles.formGroup}>
-          <Text style={styles.label}>Ngày sinh <Text style={styles.asterisk}>*</Text></Text>
-          <View style={styles.inputContainer}>
+          <Text style={styles.label}>
+            Ngày sinh <Text style={styles.asterisk}>*</Text>
+          </Text>
+          <TouchableOpacity
+            onPress={() => setShowDOBPicker(true)}
+            style={[styles.inputContainer, { justifyContent: 'center' }]}
+          >
             <Icon name="calendar" size={16} color="#00B5F1" style={styles.icon} />
-            <TextInput
-              style={styles.input}
-              value={date}
-              onChangeText={setDate}
-              placeholder="Vd: Nam"
+            <Text style={styles.input}>{formatDate(dateOfBirth)}</Text>
+          </TouchableOpacity>
+          {showDOBPicker && (
+            <DateTimePicker
+              value={dateOfBirth}
+              mode="date"
+              display="spinner"
+              onChange={(event, date) => handleDateChange(event, date, 'dob')}
             />
-          </View>
+          )}
         </View>
-
         {/* Gender (Specialty) */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Giới tính <Text style={styles.asterisk}>*</Text></Text>
@@ -126,33 +265,32 @@ const AppointmentForm = () => {
             <Icon name="envelope" size={16} color="#00B5F1" style={styles.icon} />
             <TextInput
               style={styles.input}
-              value={patient}
-              onChangeText={setPatient}
+              value={email}
+              onChangeText={setEmail}
               placeholder="Vd: tranhuutuan@gmail.com"
             />
           </View>
         </View>
         <View style={styles.formGroup}>
-          <Text style={styles.label}>Địa chỉ khám <Text style={styles.asterisk}>*</Text></Text>
-          <View style={styles.inputContainer}>
-            <Icon name="user-plus" size={16} color="#00B5F1" style={styles.icon} />
-            <RNPickerSelect
-              onValueChange={(value) => setMap(value)}
-              items={[
-                { label: 'Nam', value: 'Nam' },
-                { label: 'Nữ', value: 'Nữ' },
-              ]}
-              value={map}
-              placeholder={{
-                label: 'Chọn địa chỉ...',
-                value: null,
-              }}
-              style={pickerSelectStyles}
-              useNativeAndroidPickerStyle={false}
-              Icon={() => <Icon2 name="chevron-down" size={20} color="#888" />}
-            />
-          </View>
-        </View>
+      <Text style={styles.label}>
+        Địa chỉ khám <Text style={styles.asterisk}>*</Text>
+      </Text>
+      <View style={styles.inputContainer}>
+        <Icon name="map" size={16} color="#00B5F1" style={styles.icon} />
+        <RNPickerSelect
+          onValueChange={(value) => setMap(value)}
+          items={clinicList}
+          value={map}
+          placeholder={{
+            label: 'Chọn địa chỉ...',
+            value: null,
+          }}
+          style={pickerSelectStyles}
+          useNativeAndroidPickerStyle={false}
+          Icon={() => <Icon2 name="chevron-down" size={20} color="#888" />}
+        />
+      </View>
+    </View>
         {/* Doctor Selection */}
         <View style={styles.formGroup}>
           <Text style={styles.label}>Bác sĩ <Text style={styles.asterisk}>*</Text></Text>
@@ -174,16 +312,24 @@ const AppointmentForm = () => {
         </View>
 
         <View style={styles.formGroup}>
-          <Text style={styles.label}>Ngày đặt<Text style={styles.asterisk}>*</Text></Text>
-          <View style={styles.inputContainer}>
+          <Text style={styles.label}>
+            Ngày đặt <Text style={styles.asterisk}>*</Text>
+          </Text>
+          <TouchableOpacity
+            onPress={() => setShowAppointmentDatePicker(true)}
+            style={[styles.inputContainer, { justifyContent: 'center' }]}
+          >
             <Icon name="calendar" size={16} color="#00B5F1" style={styles.icon} />
-            <TextInput
-              style={styles.input}
-              value={patient}
-              onChangeText={setPatient}
-              placeholder="Vd: tranhuutuan@gmail.com"
+            <Text style={styles.input}>{formatDate(appointmentDate)}</Text>
+          </TouchableOpacity>
+          {showAppointmentDatePicker && (
+            <DateTimePicker
+              value={appointmentDate}
+              mode="date"
+              display="spinner"
+              onChange={(event, date) => handleDateChange(event, date, 'appointment')}
             />
-          </View>
+          )}
         </View>
 
         <View style={styles.formGroup}>
@@ -214,23 +360,28 @@ const AppointmentForm = () => {
         <View style={styles.formGroup2}>
           <Text style={styles.label}>Nội dung hẹn khám</Text>
           <View style={styles.inputContainer}>
-            <Icon name="arrow-right" size={16} color="#00B5F1" style={styles.icon} />
             <TextInput
-              style={styles.input}
+              style={styles.input2}
               value={notes}
               onChangeText={setNotes}
-              placeholder="Triệu chứng, thuốc đang dùng, tiền sử..."
+              multiline={true}         
+              numberOfLines={4}         
+              textAlignVertical="top"
             />
           </View>
         </View>
       </ScrollView>
+    </KeyboardAvoidingView>
 
       {/* Submit Button */}
-      <View style={styles.navbar}>
-        <TouchableOpacity style={styles.button}>
+     <View style={styles.navbar}>
+        <TouchableOpacity style={styles.button} onPress={handleBooking}>
+        <Icon name="calendar" size={20}  style={styles.time2} />
           <Text style={styles.buttonText}>Đặt lịch khám</Text>
         </TouchableOpacity>
       </View>
+
+      <Toast ref={(ref) => Toast.setRef(ref)} />
     </View>
   );
 };
@@ -257,7 +408,7 @@ const pickerSelectStyles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: '#fff',
     width: '100%',
-    paddingLeft: 35,  // Align the text similar to TextInput
+    paddingLeft: 35,  
   },
   placeholder: {
     color: '#888',
@@ -269,109 +420,5 @@ const pickerSelectStyles = StyleSheet.create({
 });
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-  },
-  navbar: {
-    flexDirection: 'row',
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    backgroundColor: 'white',
-    borderTopColor: '#F0F2F5',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    paddingVertical: 20,
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-    borderWidth: 1,
-    borderColor: '#FFFFFF',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.25,
-    shadowRadius: 5,
-    height: 100,
-  },
-  background: {
-    height: 100,
-    alignItems: 'center',
-    width:'100%'
-  },
-  headerText: {
-    color: '#fff',
-    fontSize: 22,
-    top: 51,
-    right: 11,
-  },
-  headerText2: {
-    color: '#fff',
-    fontSize: 24,
-    top: 52,
-    right: 93,
-  },
-  formGroup: {
-    marginBottom: 10,
-    marginTop: 10,
-    marginHorizontal: 20,
-  },
-  formGroup2: {
-    marginBottom: 130,
-    marginTop: 10,
-    marginHorizontal: 20,
-  },
-  label: {
-    marginBottom: 5,
-  },
-  asterisk: {
-    color: '#1B77E3', // Set color of asterisk to blue
-  },
-  inputContainer: {
-    position: 'relative',
-    flexDirection: 'row', // Align the icon and input horizontally
-    alignItems: 'center',
-    
-  },
-  input: {
-    width: '100%',
-    paddingLeft: 35, // Add padding on the left to make space for the icon
-    padding: 12,
-    borderColor: '#ddd',
-    borderWidth: 1,
-    borderRadius: 8,
-    fontSize: 16,
-    backgroundColor: '#fff',
-  },
-  icon: {
-    position: 'absolute',
-    left: 10, 
-    alignContent:'center', 
-    top: '50%',
-    transform: [{ translateY: -10 }], 
-    zIndex: 2,
-  },
-  icon2: {
-    position: 'absolute',
-    left: 343, 
-    top: '50%', // Center the icon vertically
-    transform: [{ translateY: -10 }], 
-    zIndex: 2,
-  },
-  button: {
-    height: 45,
-    paddingHorizontal: 30,
-    backgroundColor: '#00B5F1',
-    borderRadius: 5,
-    width: '90%',
-    marginBottom: 10,
-  },
-  buttonText: {
-    fontSize: 20,
-    color: '#fff',
-    textAlign: 'center', // Align text horizontally
-    lineHeight: 43, // Adjust line height to match button height for vertical centering
-    textAlignVertical: 'center', // This is useful on Android to center vertically
-  },
-});
 
 export default AppointmentForm;

@@ -1,98 +1,126 @@
 import { StyleSheet } from "react-native";
+
 const styles = StyleSheet.create({
-    full:{
-        display:'flex',
-        justifyContent:'space-between',
-        // flexDirection:'row'
-        height:'100%',
-    },
-  head: {
-    // display:'flex',
-    alignItems: "center",
-    // justifyContent:'center',
-    backgroundColor: '#3077ae',
-    height: 80
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
   },
-  text: {
-    marginTop: 45,
-    fontSize: 20,
-    color: "white",
-  },
-//   
-  image:{
-    width:'80%',
-    height:200,
-      // marginTop:15,
-    borderRadius:10,
-    marginVertical:10,
-      // backgroundColor:'red'
-  },
-  imagemargin:{
-    paddingHorizontal:20,
-  },
-  content:{
-    display:'flex',
-    alignItems:'center',
-    marginVertical:10,
+  time2: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    color: '#00B5F1',
     
   },
-  newsource:{
-    marginTop:7,
-    width:70,
-    height:14
-  },
-  duongke:{
-    borderBottomWidth:1,
-    borderColor:'#E8E8E8',
-    width:372,
-    
-},  
   navbar: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent:'space-around',
-    backgroundColor:'white',
-    paddingVertical:24,
-    color:'#848684',
+    flexDirection: 'row',
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    backgroundColor: 'white',
+    borderTopColor: '#F0F2F5',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    paddingVertical: 20,
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+    borderWidth: 1,
+    borderColor: '#FFFFFF',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    height: 100,
   },
-  navbarv2: {
-    // alignItems:'baseline',
-    // justifyContent: "center",
-    // backgroundColor: "red",
-    // height: 10,
-    // width: 10,
+  background: {
+    height: 100,
+    alignItems: 'center',
+    width:'100%'
   },
-  mainicon: {
-    // marginTop: 12,
-    color: "#3077ae",
-    fontSize: 25,
-    paddingHorizontal: 52,
+  headerText: {
+    color: '#fff',
+    fontSize: 22,
+    top: 51,
+    right: 11,
   },
-  maintxt:{
-    color:"#3077ae",
+  headerText2: {
+    color: '#fff',
+    fontSize: 24,
+    top: 52,
+    right: 93,
+  },
+  formGroup: {
+    marginBottom: 10,
+    marginTop: 10,
+    marginHorizontal: 20,
+  },
+  formGroup2: {
+    marginBottom: 130,
+    marginTop: 10,
+    marginHorizontal: 20,
+  },
+  label: {
+    marginBottom: 5,
+  },
+  asterisk: {
+    color: '#1B77E3', // Set color of asterisk to blue
+  },
+  inputContainer: {
+    position: 'relative',
+    flexDirection: 'row', // Align the icon and input horizontally
+    alignItems: 'center',
+    
+  },
+  input: {
+    width: '100%',
+    paddingLeft: 35, // Add padding on the left to make space for the icon
+    padding: 12,
+    borderColor: '#ddd',
+    borderWidth: 1,
+    borderRadius: 8,
+    fontSize: 16,
+    backgroundColor: '#fff',
+  },
+  input2: {
+    width: '100%',
+    padding: 12,
+    borderColor: '#ddd',
+    borderWidth: 1,
+    borderRadius: 8,
+    fontSize: 16,
+    backgroundColor: '#fff',
+    height:100
   },
   icon: {
-    // marginTop: 12,
-    color: '#848684',
-    fontSize: 25,
-    paddingHorizontal: 47,
+    position: 'absolute',
+    left: 10, 
+    alignContent:'center', 
+    top: '50%',
+    transform: [{ translateY: -10 }], 
+    zIndex: 2,
   },
-  txt:{
-    paddingHorizontal:30,
-   
-    color: '#848684',
-    
+  icon2: {
+    position: 'absolute',
+    left: 343, 
+    top: '50%', // Center the icon vertically
+    transform: [{ translateY: -10 }], 
+    zIndex: 2,
   },
-  hot:{
-    display:'flex',
-    flexDirection:'row',
-    marginVertical:8,
-  },
-  iconhot:{
-    color:'#3077ae',
-    fontSize: 19,
+  button: {
+    height: 45,
     paddingHorizontal: 30,
+    backgroundColor: '#E2F4FD',
+    borderWidth:1.5,
+    borderColor:'#00B5F1',
+    borderRadius: 5,
+    width: '90%',
+    marginBottom: 10,
+  },
+  buttonText: {
+    fontSize: 18,
+    color: '#00B5F1',
+    textAlign: 'center', // Align text horizontally
+    lineHeight: 43, // Adjust line height to match button height for vertical centering
+    textAlignVertical: 'center', // This is useful on Android to center vertically
   },
 });
 

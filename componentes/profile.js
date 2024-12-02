@@ -19,7 +19,7 @@ const Profile = ({navigation}) => {
             colors={['rgba(255, 255, 255, 0)', '#FFFFFF']}
             style={styles.overlay}
           />
-      <View style={{marginTop:-140}}>
+      <View style={{marginTop:-80}}>
         <View style={styles.header}>
           <Image style={styles.chatIcon} source={{ uri: 'https://cdn.bookingcare.vn/fo/w640/2024/03/27/151956-chatboticon.png' }} />
           <Text style={styles.headerTitle}>Chưa là thành viên?</Text>
@@ -55,13 +55,15 @@ const Profile = ({navigation}) => {
           <Icon2 name="user-plus" size={24} color="#2F363D"  onPress={() => { navigation.navigate('BacSi' )}}/>
           <Text style={styles.navbarText}>Bác sĩ</Text>
         </View>
-        <View  style={{alignItems: 'center',marginLeft:65}} >
-          <Icon2 name="search" size={24} color="#2F363D" />
-          <Text style={styles.navbarText}>Theo dõi</Text>
-        </View>
+        <View style={{ alignItems: 'center', marginLeft: 65 }}>
+                        <Icon2 name="search" size={24} color="#2F363D"  onPress={() => {
+                                navigation.navigate('DanhSachLichKham');
+                            }}/>
+                        <Text style={styles.navbarText}>Theo dõi</Text>
+            </View>
         <TouchableOpacity style={styles.navbarItem} onPress={() => { navigation.navigate('Profile' )}}>
-          <Icon2 name="user" size={24} color="#2F363D" />
-          <Text style={styles.navbarText}>Tài khoản</Text>
+          <Icon2 name="user" size={24} color="#00B5F1" />
+          <Text style={styles.navbarText2}>Tài khoản</Text>
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.floatingButton} onPress={() => { navigation.navigate('DatLichKham' )}}>
@@ -169,8 +171,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.18,
   },
   chatIcon: {
-    width: 75,
-    height: 75,
+    width: 95,
+    height: 95,
+    marginTop:-80,
     marginBottom:15,
     borderColor: 'red',
     shadowColor: '#64B9E5',
@@ -229,6 +232,10 @@ const styles = StyleSheet.create({
     bottom: 715,
     zIndex: 0,
   },
+  navbarText2: {
+    fontSize: 14,
+    color: '#00B5F1',
+  }
 });
 
 export default Profile;

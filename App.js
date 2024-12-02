@@ -9,6 +9,8 @@ import Dangki from './componentes/dangki'
 import BacSi from './componentes/bacsi';
 import Profile from './componentes/profile';
 import DatLichKham from './componentes/datlichkham';
+import ChiTietBacSi from './componentes/chitietbacsi';
+import DanhSachLichKham from './componentes/dansachlichkham';
 
 
 const Stack= createNativeStackNavigator();
@@ -23,6 +25,8 @@ const App=()=> {
         <Stack.Screen name='BacSi' component={BacSi}/>
         <Stack.Screen name='DatLichKham' component={DatLichKham}/>
         <Stack.Screen name='Profile' component={Profile}/>
+        <Stack.Screen name='ChiTietBacSi' component={ChiTietBacSi}/>
+        <Stack.Screen name='DanhSachLichKham' component={DanhSachLichKham}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

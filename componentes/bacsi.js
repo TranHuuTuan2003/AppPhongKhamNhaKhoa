@@ -4,8 +4,8 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icon3 from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Feather';
 import axios from 'axios';  
-
-const backgroundImage = { uri: 'https://anhdepfree.com/wp-content/uploads/2018/11/Blue-Wallpaper-hinh-nen-mau-xanh-27.jpg' };
+import imgnen from '../assets/anhnen.jpg'
+import request from '../utils/httpRequest';
 
 export default function DoctorSearchScreen({ navigation }) {
   const [searchText, setSearchText] = useState('');
@@ -44,7 +44,7 @@ export default function DoctorSearchScreen({ navigation }) {
     <View style={styles.container}>
       {/* Search Bar */}
       <ImageBackground
-        source={backgroundImage}
+        source={imgnen}
         style={styles.background}
         resizeMode="cover"
       >
@@ -68,7 +68,7 @@ export default function DoctorSearchScreen({ navigation }) {
       </ImageBackground>
 
       {/* Doctor Cards */}
-      <ScrollView style={{ padding: 10 }}>
+      <ScrollView style={{ padding: 5 }}>
         {filteredDoctors.length > 0 ? (
           filteredDoctors.map((doctor, index) => (
             <View key={index} style={styles.doctorCard}>
@@ -76,10 +76,16 @@ export default function DoctorSearchScreen({ navigation }) {
                 <Image source={{ uri: doctor.image }} style={styles.doctorImage} />
                 <View style={styles.doctorInfo}>
                   <Text style={styles.doctorName} numberOfLines={1}>{doctor.name}</Text>
-                  <TouchableOpacity style={styles.bookButton}>
+                  <TouchableOpacity
+                    style={styles.bookButton}
+                    onPress={() => {
+                      navigation.navigate('ChiTietBacSi', { doctorId: doctor.id }); 
+                    }}
+                  >
                     <Icon name="calendar-alt" size={14} color="white" />
                     <Text style={styles.bookButtonText}> Đặt lịch</Text>
                   </TouchableOpacity>
+
                 </View>
                 <TouchableOpacity style={styles.favorite}>
                   <Icon name="heart" size={20} color="gray" />
@@ -113,13 +119,15 @@ export default function DoctorSearchScreen({ navigation }) {
           <Text style={styles.navbarText}>Trang chủ</Text>
         </View>
         <View style={styles.navbarItem}>
-          <Icon2 name="user-plus" size={24} color="#2F363D" onPress={() => { navigation.navigate('BacSi') }} />
-          <Text style={styles.navbarText}>Bác sĩ</Text>
+          <Icon2 name="user-plus" size={24} color="#00B5F1" onPress={() => { navigation.navigate('BacSi') }} />
+          <Text style={styles.navbarText2}>Bác sĩ</Text>
         </View>
         <View style={{ alignItems: 'center', marginLeft: 65 }}>
-          <Icon2 name="search" size={24} color="#2F363D" />
-          <Text style={styles.navbarText}>Theo dõi</Text>
-        </View>
+                        <Icon2 name="search" size={24} color="#2F363D"  onPress={() => {
+                                navigation.navigate('DanhSachLichKham');
+                            }}/>
+                        <Text style={styles.navbarText}>Theo dõi</Text>
+                    </View>
         <TouchableOpacity style={styles.navbarItem} onPress={() => { navigation.navigate('Profile') }}>
           <Icon2 name="user" size={24} color="#2F363D" />
           <Text style={styles.navbarText}>Tài khoản</Text>
@@ -139,7 +147,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
-  
+  navbarText2: {
+    fontSize: 14,
+    color: '#00B5F1',
+  },
   header: {
     backgroundColor: '#00B5F1',
     color: 'white',
@@ -169,7 +180,7 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'center',
     height:140,
-    alignItems:'center'
+    alignItems:'center',
     
   },
   searchInput: {

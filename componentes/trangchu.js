@@ -6,11 +6,8 @@ import logo from '../assets/svgviewer-png-output.png';
 import Icon from 'react-native-vector-icons/Feather';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import styles from '../css/stylesTrangchu';
-
-// Hình ảnh nền
-const backgroundImage = {
-    uri: 'https://anhdepfree.com/wp-content/uploads/2018/11/Blue-Wallpaper-hinh-nen-mau-xanh-27.jpg'
-};
+import imgnen from '../assets/anhnen.jpg'
+import request from '../utils/httpRequest';
 
 export default function HospitalApp({ navigation }) {
     const [isNavbarVisible, setIsNavbarVisible] = useState(false);
@@ -22,57 +19,60 @@ export default function HospitalApp({ navigation }) {
        
         const fetchDoctors = async () => {
             try {
-                const response = await fetch('http://192.168.0.100:4000/get-top-6-doctor');
-                const result = await response.json();
+                const response = await request.get('get-top-6-doctor'); // Gửi request
+                const result = response.data; // Lấy dữ liệu từ response
+        
                 if (result.success) {
-                    // Assuming the API returns an array of doctor objects with 'image' and 'name'
+                    // Kiểm tra thành công và cập nhật state với dữ liệu bác sĩ
                     setDoctorData(result.data);
                 } else {
                     console.error('Failed to fetch doctors:', result.error);
                 }
             } catch (error) {
-                console.error('Error fetching doctors:', error);
+                // Bắt lỗi khi gửi request hoặc gặp vấn đề khác
+                console.error('Error fetching doctors:', error.message);
+            }
+        };
+        
+
+        const fetchServices = async () => {
+            try {
+                const response = await request.get('get-all-services-top');
+                const result = response.data; // Lấy dữ liệu từ axios
+        
+                if (result.success) {
+                    const formattedServices = result.data.map(service => ({
+                        name: service.name,
+                        avatar: service.avatar,
+                    }));
+                    setServices(formattedServices); // Cập nhật state với dữ liệu format
+                } else {
+                    console.error('Error fetching services:', result.error);
+                }
+            } catch (error) {
+                console.error('Fetch error:', error.message); // Hiển thị lỗi
             }
         };
 
         const fetchData = async () => {
             try {
-                const response = await fetch('http://192.168.0.100:4000/get-top-6-news');
-                const result = await response.json();
-
+                const response = await request.get('get-top-6-news');
+                const result = response.data; // Lấy dữ liệu từ axios
+        
                 if (result.success) {
                     const formattedData = result.data.map(news => ({
                         ...news,
-                        created_at: new Date(news.created_at).toISOString().split('T')[0], // Extract YYYY-MM-DD
+                        created_at: new Date(news.created_at).toISOString().split('T')[0], // Lấy YYYY-MM-DD
                     }));
-                    setNewData(formattedData);
+                    setNewData(formattedData); // Cập nhật state với dữ liệu đã format
                 } else {
                     console.error('Failed to fetch news:', result.error);
                 }
             } catch (error) {
-                console.error('Error fetching news:', error);
+                console.error('Error fetching news:', error.message); // Hiển thị lỗi
             }
         };
         
-        const fetchServices = async () => {
-            try {
-                const response = await fetch('http://192.168.0.100:4000/get-all-services-top');
-                const result = await response.json();
-
-                if (result.success) {
-                    // Assuming API returns an array of services with name and avatar
-                    const formattedServices = result.data.map(service => ({
-                        name: service.name,
-                        avatar: service.avatar,
-                    }));
-                    setServices(formattedServices);
-                } else {
-                    console.error('Error fetching services:', result.error);
-                }
-            } catch (error) {
-                console.error('Fetch error:', error);
-            }
-        };
 
         fetchServices();
         fetchData();
@@ -90,7 +90,7 @@ export default function HospitalApp({ navigation }) {
     };
     return (
         <View style={styles.container}>
-            <ImageBackground source={backgroundImage} style={styles.background} resizeMode="cover">
+            <ImageBackground source={imgnen} style={styles.background} resizeMode="cover">
                 <LinearGradient colors={['rgba(255, 255, 255, 0)', '#FFFFFF']} style={styles.overlay} />
                 <ScrollView>
                     <Image source={logo} style={styles.logo_plus} />
@@ -208,12 +208,12 @@ export default function HospitalApp({ navigation }) {
                         <Icon
                             name="home"
                             size={24}
-                            color="#2F363D"
+                            color="#00B5F1"
                             onPress={() => {
                                 navigation.navigate('Trangchu');
                             }}
                         />
-                        <Text style={styles.navbarText}>Trang chủ</Text>
+                        <Text style={styles.navbarText2}>Trang chủ</Text>
                     </View>
                     <View style={styles.navbarItem}>
                         <Icon
@@ -227,7 +227,9 @@ export default function HospitalApp({ navigation }) {
                         <Text style={styles.navbarText}>Bác sĩ</Text>
                     </View>
                     <View style={{ alignItems: 'center', marginLeft: 65 }}>
-                        <Icon name="search" size={24} color="#2F363D" />
+                        <Icon name="search" size={24} color="#2F363D"  onPress={() => {
+                                navigation.navigate('DanhSachLichKham');
+                            }}/>
                         <Text style={styles.navbarText}>Theo dõi</Text>
                     </View>
                     <TouchableOpacity
