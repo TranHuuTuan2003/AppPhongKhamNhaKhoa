@@ -18,7 +18,7 @@ const Stack= createNativeStackNavigator();
 const App=()=> {
   return (
     <NavigationContainer >
-      <Stack.Navigator initialRouteName='Trangchu' screenOptions={{headerShown:false}}>
+      <Stack.Navigator initialRouteName='Dangnhap' screenOptions={{headerShown:false}}>
         <Stack.Screen name='Dangnhap' component={Dangnhap}/>
         <Stack.Screen name='Trangchu' component={Trangchu}/>
         <Stack.Screen name='Dangki'  component={Dangki}/>

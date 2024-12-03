@@ -5,8 +5,9 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icon3 from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Feather';
 import Toast from 'react-native-toast-message';  
+import request from '../utils/httpRequest';
 
-const App = ({ navigation }) => {
+const LichKham = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedBookingId, setSelectedBookingId] = useState(null);
   const [selectedBooking, setSelectedBooking] = useState(null);
@@ -73,8 +74,8 @@ const App = ({ navigation }) => {
   
   const fetchBookings = async () => {
       try {
-          const response = await fetch('http://192.168.0.100:4000/get-list-booking');
-          const result = await response.json();
+          const response = await request.get('get-list-booking');
+          const result = await response.data;
   
           if (result.success) {
               setBookings(result.data);
@@ -107,8 +108,8 @@ const App = ({ navigation }) => {
   const openModal = async (id) => {
       setSelectedBookingId(id);
       try {
-          const bookingResponse = await fetch(`http://192.168.0.100:4000/get-booking-by-id/${id}`);
-          const bookingResult = await bookingResponse.json();
+          const bookingResponse = await request.get(`get-booking-by-id/${id}`);
+          const bookingResult = await bookingResponse.data;
   
           if (bookingResult.success) {
               setSelectedBooking(bookingResult.data);
@@ -127,8 +128,8 @@ const App = ({ navigation }) => {
   
   const fetchDoctorDetails = async (doctorId) => {
       try {
-          const response = await fetch(`http://192.168.0.100:4000/get-doctor-by-id/${doctorId}`);
-          const result = await response.json();
+          const response = await request.get(`get-doctor-by-id/${doctorId}`);
+          const result = await response.data;
   
           if (result.success) {
               setDoctorDetails(result.data);
@@ -638,4 +639,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default LichKham;

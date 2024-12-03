@@ -4,6 +4,10 @@ import { StyleSheet, Text, View, CheckBox, TouchableOpacity, ImageBackground, Sa
 import Icon from 'react-native-vector-icons/Fontisto';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import styles from '../css/stylesDangnhap';
+import logo from '../assets/svgviewer-png-output.png';
+import Toast from 'react-native-toast-message'; 
+import imgnen from '../assets/anhnen.jpg'
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Dangnhap=({navigation})=> {
     const [taikhoan,settaikhoan] = useState('');
@@ -20,20 +24,44 @@ const Dangnhap=({navigation})=> {
           if (checkDangnhap) 
           {
             // alert ("Đăng nhập thành công !")
-            navigation.navigate('Tintuc');
+            navigation.navigate('Trangchu');
           } 
           else{
             if( matkhau === '' && taikhoan != ''){
-                Alert.alert ("Thông báo","Vui lòng nhập mật khẩu !")  
+                Toast.show({
+                    type: 'error',
+                    position: 'top',
+                    text1: 'Vui lòng nhập mật khẩu !',
+                    visibilityTime: 5000,
+                    autoHide: true,
+                  });
             }
             if( matkhau != '' && taikhoan === ''){
-                Alert.alert ("Thông báo","Vui lòng nhập tài khoản !")
+                Toast.show({
+                    type: 'error',
+                    position: 'top',
+                    text1: 'Vui lòng nhập tài khoản !',
+                    visibilityTime: 5000,
+                    autoHide: true,
+                  });
             }
             if( matkhau != '' && taikhoan != ''){
-                Alert.alert ("Thông báo","Thông tin tài khoản hoặc mật khẩu chưa đúng !")
+                Toast.show({
+                    type: 'error',
+                    position: 'top',
+                    text1: 'Thông tin tài khoản hoặc mật khẩu chưa đúng !',
+                    visibilityTime: 5000,
+                    autoHide: true,
+                  });
             }
             if( matkhau === '' && taikhoan===''){
-                Alert.alert ("Thông báo","Vui lòng nhập tài khoản và mật khẩu !")  
+                Toast.show({
+                    type: 'error',
+                    position: 'top',
+                    text1: 'Vui lòng nhập tài khoản và mật khẩu !',
+                    visibilityTime: 5000,
+                    autoHide: true,
+                  });
             }
           }
         } 
@@ -44,10 +72,13 @@ const Dangnhap=({navigation})=> {
 
   return (
     <SafeAreaView style={styles.container}>
+         <ImageBackground source={imgnen} style={styles.background} resizeMode="cover">
+         <LinearGradient colors={['rgba(255, 255, 255, 0)', '#FFFFFF']} style={styles.overlay} />
+          <Toast ref={(ref) => Toast.setRef(ref)} />
             <StatusBar backgroundColor={'#fffff'} barStyle="dark-content"></StatusBar>
         <TouchableOpacity>
         <View style={styles.login}>
-        <Image source={require('../assets/logo.png')}
+        <Image source={logo}
         style={styles.lg}/>
         </View>
         </TouchableOpacity>  
@@ -96,9 +127,10 @@ const Dangnhap=({navigation})=> {
                 </Text>
                 </View>
                 <View>
-                <Image  style={{ width: '100%'}}
-                 resizeMode="cover" source={require('../assets/lg2.png')}/>
+                <Image  style={{ width: '100%',marginTop:45}}
+                 resizeMode="cover" source={require('../assets/aaa.png')}/>
                 </View>
+                </ImageBackground>
            </SafeAreaView>
   );
 }

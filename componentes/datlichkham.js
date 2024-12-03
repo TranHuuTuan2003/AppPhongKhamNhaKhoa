@@ -17,10 +17,10 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import axios from 'axios';
 import Toast from 'react-native-toast-message';  // Import Toast
 import styles from '../css/stylesDatLichKham';
-
+import request from '../utils/httpRequest';
 const backgroundImage = { uri: 'https://anhdepfree.com/wp-content/uploads/2018/11/Blue-Wallpaper-hinh-nen-mau-xanh-27.jpg' };
 
-const AppointmentForm = () => {
+const AppointmentForm = ({route}) => {
   const [specialty, setSpecialty] = useState('');
   const [doctor, setDoctor] = useState('');
   const [map, setMap] = useState(null);
@@ -35,11 +35,13 @@ const AppointmentForm = () => {
   const [clinicList, setClinicList] = useState([]);
   const [showDOBPicker, setShowDOBPicker] = useState(false);
   const [showAppointmentDatePicker, setShowAppointmentDatePicker] = useState(false);
+  const { doctorId = 0 } = route.params || {};
+  const { clinic_id = 0 } = route.params || {};
 
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await axios.get('http://192.168.0.100:4000/get-all-doctor');
+        const response = await request.get('get-all-doctor');
         if (response.data.success) {
           const doctorList = response.data.data.map((doctor) => ({
             label: doctor.name,
@@ -56,7 +58,7 @@ const AppointmentForm = () => {
 
     const fetchClinicList = async () => {
       try {
-        const response = await axios.get('http://192.168.0.100:4000/get-list-clinic');
+        const response = await request.get('get-list-clinic');
         if (response.data.success) {
           const formattedData = response.data.data.map((item) => ({
             label: item.name,
@@ -138,7 +140,7 @@ const AppointmentForm = () => {
     };
 
     try {
-      const response = await axios.post('http://192.168.0.100:4000/insert-booking', bookingData);
+      const response = await request.post('insert-booking', bookingData);
       if (response.data.success) {
         Toast.show({
           type: 'success',
@@ -280,7 +282,7 @@ const AppointmentForm = () => {
         <RNPickerSelect
           onValueChange={(value) => setMap(value)}
           items={clinicList}
-          value={map}
+          value={map || clinic_id}
           placeholder={{
             label: 'Chọn địa chỉ...',
             value: null,
@@ -299,7 +301,7 @@ const AppointmentForm = () => {
             <RNPickerSelect
               onValueChange={(value) => setDoctor(value)}
               items={doctors}
-              value={doctor}
+              value={doctor || doctorId} 
               placeholder={{
                 label: 'Chọn bác sĩ...',
                 value: null,

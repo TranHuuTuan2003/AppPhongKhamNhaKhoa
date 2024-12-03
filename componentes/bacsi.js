@@ -15,7 +15,7 @@ export default function DoctorSearchScreen({ navigation }) {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await axios.get('http://192.168.0.100:4000/get-all-doctor');
+        const response = await request.get('get-all-doctor');
         const fetchedDoctors = response.data.data; 
         setDoctors(fetchedDoctors);  
         setFilteredDoctors(fetchedDoctors);  

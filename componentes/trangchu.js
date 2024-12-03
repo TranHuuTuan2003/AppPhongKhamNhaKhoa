@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, ImageBackground, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, Linking,ImageBackground, TouchableWithoutFeedback } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity } from 'react-native';
 import logo from '../assets/svgviewer-png-output.png';
@@ -88,6 +88,31 @@ export default function HospitalApp({ navigation }) {
     const toggleNavbar = () => {
         setIsNavbarVisible(!isNavbarVisible);
     };
+
+    const handlePress = () => {
+          const phoneNumber = `tel:0868686868`; // Số điện thoại từ API
+          Linking.openURL(phoneNumber).catch(err => {
+            Alert.alert('Lỗi', 'Không thể thực hiện cuộc gọi');
+            console.error(err);
+          });
+      };
+    
+      const handleChatPress = () => {
+          const zaloUrl = `https://zalo.me/0868686868}`; 
+          Linking.openURL(zaloUrl).catch(err => {
+            Alert.alert('Lỗi', 'Không thể mở Zalo');
+            console.error(err);
+          });
+      };
+    
+      const handleChatPress2 = () => {
+        const messengerUrl = 'https://m.me/nha_khoa_medi';  // Thay "your_facebook_username" bằng tên người dùng Facebook của bạn
+        Linking.openURL(messengerUrl).catch(err => {
+          Alert.alert('Lỗi', 'Không thể mở Messenger');
+          console.error(err);
+        });
+      };
+      
     return (
         <View style={styles.container}>
             <ImageBackground source={imgnen} style={styles.background} resizeMode="cover">
@@ -142,9 +167,11 @@ export default function HospitalApp({ navigation }) {
                         <Text style={styles.title3}>{doctor.name}</Text>
                         <TouchableOpacity
                             style={styles.button}
-                            onPress={() => alert('Scheduling appointment...')}
+                            onPress={() => {
+                                navigation.navigate('ChiTietBacSi', { doctorId: doctor.id }); 
+                              }}
                         >
-                            <Text style={styles.buttonText}>Đặt lịch bệnh viện</Text>
+                            <Text style={styles.buttonText}>  Đặt lịch bác sĩ  </Text>
                         </TouchableOpacity>
                     </View>
                 ))}
@@ -266,7 +293,7 @@ export default function HospitalApp({ navigation }) {
                         <View style={styles.navbarchat}>
                             <Text style={styles.header}>Chăm sóc khách hàng</Text>
 
-                            <TouchableOpacity style={styles.item}>
+                            <TouchableOpacity style={styles.item} onPress={handlePress}>
                                 <Image
                                     source={{
                                         uri: 'https://hapotravel.com/wp-content/uploads/2023/04/tong-hop-25-logo-dien-thoai-dep-nhat-nam-2023_26.jpg'
@@ -280,7 +307,7 @@ export default function HospitalApp({ navigation }) {
                                 <Icon name="arrow-right" size={19} color="#00B5F1" />
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.item}>
+                            <TouchableOpacity style={styles.item} onPress={handleChatPress2}>
                                 <Image
                                     source={{
                                         uri: 'https://static-00.iconduck.com/assets.00/messenger-icon-1024x1024-wsuio165.png'
@@ -293,7 +320,7 @@ export default function HospitalApp({ navigation }) {
                                 <Icon name="arrow-right" size={19} color="#00B5F1" />
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.item}>
+                            <TouchableOpacity style={styles.item} onPress={handleChatPress}>
                                 <Image
                                     source={{
                                         uri: 'https://giaiphapzalo.com/wp-content/uploads/2021/10/logo-transperant.png'

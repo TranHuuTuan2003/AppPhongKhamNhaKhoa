@@ -8,12 +8,15 @@ import {
   ScrollView,
   ImageBackground,
   ActivityIndicator,
+  Linking,
 } from 'react-native';
 import Icon2 from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon3 from 'react-native-vector-icons/FontAwesome5';
 import axios from 'axios';
 import imgnen from '../assets/anhnen.jpg'
+import { useNavigation } from '@react-navigation/native';
+import request from '../utils/httpRequest';
 
 const backgroundImage1 = { uri: 'https://png.pngtree.com/background/20220729/original/pngtree-abstract-light-grey-world-map-background-picture-image_1856648.jpg' };
 
@@ -22,11 +25,13 @@ const DoctorInformation = ({ route }) => {
   const [doctorDetails, setDoctorDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigation = useNavigation();
+
 
   useEffect(() => {
     const fetchDoctorDetails = async () => {
       try {
-        const response = await axios.get(`http://192.168.0.100:4000/get-doctor-by-id/${doctorId}`);
+        const response = await request.get(`get-doctor-by-id/${doctorId}`);
         if (response.data.success) {
           setDoctorDetails(response.data.data);
         } else {
@@ -41,6 +46,50 @@ const DoctorInformation = ({ route }) => {
 
     fetchDoctorDetails();
   }, [doctorId]);
+
+  const handlePress = () => {
+    if (doctorDetails && doctorDetails.phone) {
+      const phoneNumber = `tel:${doctorDetails.phone}`; // Số điện thoại từ API
+      Linking.openURL(phoneNumber).catch(err => {
+        Alert.alert('Lỗi', 'Không thể thực hiện cuộc gọi');
+        console.error(err);
+      });
+    } else {
+      Alert.alert('Lỗi', 'Không tìm thấy số điện thoại');
+    }
+  };
+
+  const handleChatPress = () => {
+    if (doctorDetails && doctorDetails.phone) {
+      const zaloUrl = `https://zalo.me/${doctorDetails.phone}`; 
+      Linking.openURL(zaloUrl).catch(err => {
+        Alert.alert('Lỗi', 'Không thể mở Zalo');
+        console.error(err);
+      });
+    } 
+    
+  };
+
+  const handleMapPress = () => {
+    const latitude = 10.762622; // Thay bằng tọa độ thực tế
+    const longitude = 106.660172; // Thay bằng tọa độ thực tế
+    const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+
+    Linking.openURL(googleMapsUrl).catch(err => {
+      Alert.alert('Lỗi', 'Không thể mở bản đồ');
+      console.error(err);
+    });
+  };
+
+  const handleBookingPress = () => {
+    if (doctorDetails && doctorDetails.id) {
+      // Điều hướng và truyền tham số
+      navigation.navigate('DatLichKham', { doctorId: doctorDetails.id, clinic_id: doctorDetails.clinic_id });
+    } else {
+      Alert.alert('Lỗi', 'Không có số điện thoại của bác sĩ');
+    }
+  };
+  
 
   if (loading) {
     return (
@@ -131,9 +180,11 @@ const DoctorInformation = ({ route }) => {
         <Text style={styles.address}>
           {address}
         </Text>
-        <TouchableOpacity style={styles.mapButton}>
-          <Text style={styles.mapButtonText}> <Icon3 name="share" size={14}  style={{color:'#ffffff'}} /> Mở bản đồ</Text>
-        </TouchableOpacity>
+        <TouchableOpacity style={styles.mapButton} onPress={handleMapPress}>
+      <Text style={styles.mapButtonText}>
+        <Icon3 name="share" size={14} style={{ color: '#ffffff' }} /> Mở bản đồ
+      </Text>
+    </TouchableOpacity>
       </View>
       </ImageBackground>
 
@@ -152,14 +203,14 @@ const DoctorInformation = ({ route }) => {
       
     </ScrollView>
     <View style={styles.navbar}>
-    <TouchableOpacity style={styles.button2}>
+    <TouchableOpacity style={styles.button2} onPress={handleChatPress}>
       <Text style={styles.buttonText2}>Chat với bác sĩ</Text>
       <Icon3 name="comment-dots" size={20}  style={styles.time2} />
     </TouchableOpacity>
-    <TouchableOpacity style={styles.button}>
-      <Text style={styles.buttonText}>Gọi điện </Text>
+    <TouchableOpacity style={styles.button} onPress={handlePress}>
+      <Text style={styles.buttonText}>Gọi điện</Text>
     </TouchableOpacity>
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button} onPress={() => handleBookingPress()}>
       <Text style={styles.buttonText}>Đặt khám</Text>
     </TouchableOpacity>
     

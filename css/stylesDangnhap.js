@@ -5,14 +5,29 @@ const styles = StyleSheet.create({
       backgroundColor:'#ffffff'
       
   },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 636,
+    zIndex: 0,
+  },
+  background: {
+    flex: 1,
+    height: '27%',
+    marginTop:-50
+  },
   login:{
       
       alignItems:'center',
-      marginTop:25
+      marginTop:75
   },
   lg:{
-      height:120,
-      width:250,
+    marginTop:35,
+    marginBottom:40,
+      height:50,
+      width:270,
   },
   
   ip:{
@@ -43,8 +58,8 @@ const styles = StyleSheet.create({
   
   
   btn:{
-  marginTop:40,
-  backgroundColor:'#3077ae',
+  marginTop:50,
+  backgroundColor:'#00B5F1',
   paddingVertical:15,
   alignItems:'center',
   borderRadius:13
@@ -61,7 +76,7 @@ const styles = StyleSheet.create({
   },
   
   quen:{
-  marginTop: 40,
+  marginTop: 50,
   marginLeft:310
   },
   
