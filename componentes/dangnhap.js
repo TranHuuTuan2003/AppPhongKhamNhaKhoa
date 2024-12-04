@@ -8,6 +8,7 @@ import logo from '../assets/svgviewer-png-output.png';
 import Toast from 'react-native-toast-message'; 
 import imgnen from '../assets/anhnen.jpg'
 import { LinearGradient } from 'expo-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Dangnhap=({navigation})=> {
     const [taikhoan,settaikhoan] = useState('');
@@ -23,6 +24,7 @@ const Dangnhap=({navigation})=> {
          
           if (checkDangnhap) 
           {
+            await AsyncStorage.setItem('taikhoan', taikhoan);
             // alert ("Đăng nhập thành công !")
             navigation.navigate('Trangchu');
           } 

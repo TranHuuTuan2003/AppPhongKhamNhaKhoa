@@ -155,7 +155,11 @@ const LichKham = ({ navigation }) => {
                   return [styles.updatedBadge2, styles.progressBar2];
               case 'Đã xác nhận':
                   return [styles.updatedBadge, styles.progressBar];
+                  case ' Hoàn thành':
+                    return [styles.updatedBadge, styles.progressBar];
               case 'Đã hủy':
+                  return [styles.updatedBadge3, styles.progressBar3];
+                  case 'Từ chối':
                   return [styles.updatedBadge3, styles.progressBar3];
               default:
                   return [styles.updatedBadge, styles.progressBar];
@@ -253,8 +257,10 @@ const LichKham = ({ navigation }) => {
             <View style={styles.modalContent}>
             <View style={
     selectedBooking?.status === 'Đã hủy' ? styles.headerM :
+    selectedBooking?.status === 'Từ chối' ? styles.headerM :
     selectedBooking?.status === 'Chờ xác nhận' ? styles.headerM2 :
     selectedBooking?.status === 'Đã xác nhận' ? styles.headerM3 :
+    selectedBooking?.status === 'Hoàn thành' ? styles.headerM3 :
     styles.headerM // default style in case status is undefined or another value
 }>
     <Text style={styles.headerTextM}>

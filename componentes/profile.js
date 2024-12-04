@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground,Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icon3 from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Feather';
 import { LinearGradient } from 'expo-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';  // Import AsyncStorage
 
 const backgroundImage = { uri: 'https://anhdepfree.com/wp-content/uploads/2018/11/Blue-Wallpaper-hinh-nen-mau-xanh-27.jpg' };
 
 const Profile = ({navigation}) => {
+  const [taikhoan, setTaikhoan] = useState('');
+
+  useEffect(() => {
+    const getTaikhoan = async () => {
+      const storedTaikhoan = await AsyncStorage.getItem('taikhoan');
+      if (storedTaikhoan) {
+        setTaikhoan(storedTaikhoan);
+      }
+    };
+    getTaikhoan();
+  }, []);
   return (
     <View style={styles.container}>
        <ImageBackground
@@ -22,11 +34,11 @@ const Profile = ({navigation}) => {
       <View style={{marginTop:-80}}>
         <View style={styles.header}>
           <Image style={styles.chatIcon} source={{ uri: 'https://cdn.bookingcare.vn/fo/w640/2024/03/27/151956-chatboticon.png' }} />
-          <Text style={styles.headerTitle}>Chưa là thành viên?</Text>
-          <Text style={styles.headerSubtitle}>Đăng ký hoặc đăng nhập ngay</Text>
+          <Text style={styles.headerSubtitle}>Bạn đã là thành viên?</Text>
+          <Text style={styles.headerTitle}>{taikhoan}</Text>
           <TouchableOpacity style={styles.button}>
             <Icon name="user" size={16} color="white" />
-            <Text style={styles.buttonText}> Đăng ký / Đăng nhập</Text>
+            <Text style={styles.buttonText}> Đăng xuất</Text>
           </TouchableOpacity>
         </View>
 
@@ -111,6 +123,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 18,
     fontWeight: 'bold',
+    color:'#00B5F1'
   },
   headerSubtitle: {
     color: '#666',

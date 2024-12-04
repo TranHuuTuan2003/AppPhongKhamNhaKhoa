@@ -20,7 +20,7 @@ import styles from '../css/stylesDatLichKham';
 import request from '../utils/httpRequest';
 const backgroundImage = { uri: 'https://anhdepfree.com/wp-content/uploads/2018/11/Blue-Wallpaper-hinh-nen-mau-xanh-27.jpg' };
 
-const AppointmentForm = ({route}) => {
+const AppointmentForm = ({route,navigation}) => {
   const [specialty, setSpecialty] = useState('');
   const [doctor, setDoctor] = useState('');
   const [map, setMap] = useState(null);
@@ -37,6 +37,7 @@ const AppointmentForm = ({route}) => {
   const [showAppointmentDatePicker, setShowAppointmentDatePicker] = useState(false);
   const { doctorId = 0 } = route.params || {};
   const { clinic_id = 0 } = route.params || {};
+  const { timeSlot = 0 } = route.params || {};
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -90,7 +91,7 @@ const AppointmentForm = ({route}) => {
   const resetForm = () => {
     setSpecialty('');
     setDoctor('');
-    setMap(null);
+    setMap('');
     setDateOfBirth(new Date());
     setAppointmentDate(new Date());
     setTime('');
@@ -101,7 +102,7 @@ const AppointmentForm = ({route}) => {
   };
 
   const handleBooking = async () => {
-    if (!patient || !phone || !email || !specialty || !doctor || !map || !appointmentDate || !time) {
+    if((!patient || !phone || !email || !specialty || !doctor || !map || !appointmentDate || !time) && (!patient || !phone || !email || !specialty || !doctorId || !clinic_id || !appointmentDate || !time)) {
       Toast.show({
         type: 'error',
         position: 'top',
@@ -180,7 +181,10 @@ const AppointmentForm = ({route}) => {
         resizeMode="cover"
       >
         <View style={{ flexDirection: 'row' }}>
+        <TouchableOpacity onPress={() => {
+                                navigation.navigate('Trangchu'); }}>
           <Icon2 name="chevron-left" size={20} color="#00B5F1" style={styles.headerText2} />
+          </TouchableOpacity>
           <Text style={styles.headerText}>Đặt lịch khám</Text>
         </View>
       </ImageBackground>
@@ -341,12 +345,12 @@ const AppointmentForm = ({route}) => {
             <RNPickerSelect
               onValueChange={(value) => setTime(value)}
               items={[
-                { label: '08:00 - 10:00',  value: '08:00 - 10:00' },
-                { label: '10:00 - 12:00', value: '10:00 - 12:00' },
-                { label: '14:00 - 16:00', value: '14:00 - 16:00' },
-                { label: '16:00 - 18:00', value: '16:00 - 18:00' },
+                { label: '7:30 - 8:30',  value: '7:30 - 8:30' },
+                { label: '8:30 - 9:30', value: '8:30 - 9:30' },
+                { label: '10:30 - 11:30', value: '10:30 - 11:30' },
+                { label: '14:00 - 15:00', value: '14:00 - 15:00' },
               ]}
-              value={time}
+              value={time|| timeSlot}
               placeholder={{
                 label: 'Chọn khung giờ...',
                 value: null,

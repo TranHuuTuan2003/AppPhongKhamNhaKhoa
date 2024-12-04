@@ -50,7 +50,10 @@ export default function DoctorSearchScreen({ navigation }) {
       >
         <View style={styles.searchBar}>
           <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity onPress={() => {
+                                navigation.navigate('Trangchu');  }}>
             <Icon2 name="chevron-left" size={20} color="#00B5F1" style={styles.headerText2} />
+            </TouchableOpacity>
             <Text style={styles.headerText}>Danh sách bác sĩ</Text>
             <Icon3 name="home" size={20} color="#00B5F1" style={styles.headerText3} />
           </View>

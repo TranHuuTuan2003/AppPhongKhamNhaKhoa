@@ -1,11 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { AsyncStorage,StyleSheet, Text, View, CheckBox, TouchableOpacity, ImageBackground, SafeAreaView, TextInput,Image,value, Alert} from 'react-native';
+import { StyleSheet, Text, View, CheckBox, TouchableOpacity, ImageBackground, SafeAreaView, TextInput,Image,value, Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
-import styles from '../css/stylesDangki';
-
-
+import styles from '../css/stylesDangnhap';
+import logo from '../assets/svgviewer-png-output.png';
+import Toast from 'react-native-toast-message'; 
+import imgnen from '../assets/anhnen.jpg'
+import { LinearGradient } from 'expo-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Dangki=({navigation})=> {
     const [taikhoan, settaikhoan] = useState('');
@@ -35,14 +38,17 @@ const Dangki=({navigation})=> {
 
   return (
     <SafeAreaView style={styles.container}>
-            <StatusBar backgroundColor={'#fffff'} barStyle="dark-content"></StatusBar>
-        <TouchableOpacity>
-        <View style={styles.login}>
-        <Image source={require('../assets/logo.png')}
-        style={styles.lg}/>
-        </View>
-        </TouchableOpacity>  
-                <View style={styles.form}>
+    <ImageBackground source={imgnen} style={styles.background} resizeMode="cover">
+    <LinearGradient colors={['rgba(255, 255, 255, 0)', '#FFFFFF']} style={styles.overlay} />
+     <Toast ref={(ref) => Toast.setRef(ref)} />
+       <StatusBar backgroundColor={'#fffff'} barStyle="dark-content"></StatusBar>
+   <TouchableOpacity>
+   <View style={styles.login}>
+   <Image source={logo}
+   style={styles.lg}/>
+   </View>
+   </TouchableOpacity>  
+   <View style={styles.form}>
                 <Text >Tài khoản</Text>
                 <View>
                     <Icon2 style={styles.icon} name="user" />
@@ -70,17 +76,19 @@ const Dangki=({navigation})=> {
                         <Text> Forgot password?</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={{ paddingHorizontal:40}}>
-                <TouchableOpacity style={styles.btn} onPress={()=>Register()}>
+           <View style={{ paddingHorizontal:40}}>
+           <TouchableOpacity style={styles.btn} onPress={()=>Register()}>
                     <Text style={styles.btn1}>Đăng kí</Text>
                     
                 </TouchableOpacity>
-                </View>
-                <View>
-                <Image  style={{ width: '100%',marginTop:20}}
-                 resizeMode="cover" source={require('../assets/lg2.png')}/>
-                </View>
-           </SafeAreaView>
+           </View>
+          
+           <View>
+           <Image  style={{ width: '100%',marginTop:45}}
+            resizeMode="cover" source={require('../assets/aaa.png')}/>
+           </View>
+           </ImageBackground>
+      </SafeAreaView>
   );
 }
 

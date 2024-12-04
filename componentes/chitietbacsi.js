@@ -20,12 +20,11 @@ import request from '../utils/httpRequest';
 
 const backgroundImage1 = { uri: 'https://png.pngtree.com/background/20220729/original/pngtree-abstract-light-grey-world-map-background-picture-image_1856648.jpg' };
 
-const DoctorInformation = ({ route }) => {
+const DoctorInformation = ({ route,navigation }) => {
   const { doctorId } = route.params; // Assume doctorId is passed via navigation params
   const [doctorDetails, setDoctorDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigation = useNavigation();
 
 
   useEffect(() => {
@@ -107,7 +106,22 @@ const DoctorInformation = ({ route }) => {
     );
   }
 
+  const timeSlots = ['7:30 - 8:30', '8:30 - 9:30', '10:30 - 11:30', '14:00 - 15:00'];
   const { name,image, content, phone, description, address } = doctorDetails;
+
+  const handleBookingPressTime = (slot) => {
+    if (doctorDetails && doctorDetails.id) {
+      // Điều hướng đến màn hình đặt lịch và truyền các tham số
+      navigation.navigate('DatLichKham', {
+        doctorId: doctorDetails.id,
+        clinic_id: doctorDetails.clinic_id,
+        timeSlot: slot,
+      });
+    } else {
+      Alert.alert('Lỗi', 'Không có số điện thoại của bác sĩ');
+    }
+  };
+
 
   return (
     <View style={styles.container}>
@@ -117,7 +131,10 @@ const DoctorInformation = ({ route }) => {
         resizeMode="cover"
       >
         <View style={{top:35}}>
+        <TouchableOpacity onPress={() => {
+                                navigation.navigate('BacSi');  }}>
         <Icon2 name="chevron-left" size={20} color="#00B5F1" style={styles.time} />
+        </TouchableOpacity>
         <Text style={styles.headerText}>Thông tin bác sĩ</Text>
         <View style={styles.icons}>
           <Text style={styles.icon}> <Icon2 name="heart" size={16}  style={styles.time} /> Lưu lại   |</Text>
@@ -155,19 +172,23 @@ const DoctorInformation = ({ route }) => {
 
         <View style={styles.month}>
           <Text>Lịch khám</Text>
-          <Text>
-            Lịch tháng 11/2024 ▼
-          </Text>
         </View>
-        <View style={styles.timeSlots}>
-        {[' 17:30 - 17:40 ', ' 17:40 - 17:50 ', ' 17:50 - 18:00 '].map((slot, index) => (
-          <View key={index} style={styles.slot}>
+       
+         <View style={styles.timeSlots}>
+      <ScrollView showsHorizontalScrollIndicator={false} horizontal>
+        {timeSlots.map((slot, index) => (
+          <TouchableOpacity
+            key={index}
+            style={styles.slot}
+            onPress={() => handleBookingPressTime(slot)} // Gọi hàm khi nhấn vào thời gian
+          >
             <Text>{slot}</Text>
-          </View>
+          </TouchableOpacity>
         ))}
-      <Text  style={{marginLeft:7,marginTop:15}}> <Icon3 name="hand-point-up" size={16}  style={styles.time2} /> Chọn một khung giờ để đặt lịch khám</Text>
-        
-      </View>
+      </ScrollView>
+    </View>
+      <Text  style={{marginLeft:8,marginBottom:15}}> <Icon3 name="hand-point-up" size={16}  style={styles.time2} /> Chọn một khung giờ để đặt lịch khám</Text>
+
       
       </View>
       {/* Location */}
@@ -347,7 +368,7 @@ const styles = StyleSheet.create({
   timeSlots: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginBottom:20,
+    marginBottom:13,
     marginLeft:7
   },
   slot: {

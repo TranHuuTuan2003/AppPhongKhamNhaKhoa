@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   
   quen:{
   marginTop: 40,
-  marginLeft:260
+  marginLeft:230
   },
   
   6:{
